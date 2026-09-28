@@ -1,0 +1,410 @@
+{
+  "year": 2025,
+  "month": 1,
+  "monthName": "January",
+  "scrapedAt": "2026-09-28T22:13:27.226Z",
+  "movies": [
+    {
+      "id": "tt28479262",
+      "type": "movie",
+      "name": "Sing Sing",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/S/Sing-Sing-2024.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2025",
+      "_releaseDate": "2025-01-31",
+      "_releaseTimestamp": 1738281600000
+    },
+    {
+      "id": "tt33319714",
+      "type": "movie",
+      "name": "Like Father Like Son",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/L/Like-Father-Like-Son-2025.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2025",
+      "_releaseDate": "2025-01-31",
+      "_releaseTimestamp": 1738281600000
+    },
+    {
+      "id": "tt13622970",
+      "type": "movie",
+      "name": "Moana 2",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/M/Moana-2-2024.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2025",
+      "_releaseDate": "2025-01-28",
+      "_releaseTimestamp": 1738022400000
+    },
+    {
+      "id": "tt8008948",
+      "type": "movie",
+      "name": "Den of Thieves 2: Pantera",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/D/Den-of-Thieves-2-Pantera-2025.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2025",
+      "_releaseDate": "2025-01-28",
+      "_releaseTimestamp": 1738022400000
+    },
+    {
+      "id": "tt30057084",
+      "type": "movie",
+      "name": "Babygirl",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/B/Babygirl-2024.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2025",
+      "_releaseDate": "2025-01-28",
+      "_releaseTimestamp": 1738022400000
+    },
+    {
+      "id": "tt6133444",
+      "type": "movie",
+      "name": "The Fire Inside",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/T/The-Fire-Inside-2024.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2025",
+      "_releaseDate": "2025-01-28",
+      "_releaseTimestamp": 1738022400000
+    },
+    {
+      "id": "tt27634066",
+      "type": "movie",
+      "name": "Freelance",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/F/Freelance-2024.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2025",
+      "_releaseDate": "2025-01-28",
+      "_releaseTimestamp": 1738022400000
+    },
+    {
+      "id": "tt13616980",
+      "type": "movie",
+      "name": "Panda Bear in Africa",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/P/Panda-Bear-in-Africa-2025.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2025",
+      "_releaseDate": "2025-01-28",
+      "_releaseTimestamp": 1738022400000
+    },
+    {
+      "id": "tt10236164",
+      "type": "movie",
+      "name": "The Girl with the Needle",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/T/The-Girl-with-the-Needle-2025.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2025",
+      "_releaseDate": "2025-01-24",
+      "_releaseTimestamp": 1737676800000
+    },
+    {
+      "id": "tt28637027",
+      "type": "movie",
+      "name": "Into the Deep",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/I/Into-the-Deep-2025.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2025",
+      "_releaseDate": "2025-01-24",
+      "_releaseTimestamp": 1737676800000
+    },
+    {
+      "id": "tt15128544",
+      "type": "movie",
+      "name": "Sunray: Fallen Soldier",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/S/Sunray-Fallen-Soldier-2025.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2025",
+      "_releaseDate": "2025-01-24",
+      "_releaseTimestamp": 1737676800000
+    },
+    {
+      "id": "tt18259086",
+      "type": "movie",
+      "name": "Sonic the Hedgehog 3",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/S/Sonic-the-Hedgehog-3-2024.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2025",
+      "_releaseDate": "2025-01-21",
+      "_releaseTimestamp": 1737417600000
+    },
+    {
+      "id": "tt5040012",
+      "type": "movie",
+      "name": "Nosferatu",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/N/Nosferatu-2024.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2025",
+      "_releaseDate": "2025-01-21",
+      "_releaseTimestamp": 1737417600000
+    },
+    {
+      "id": "tt15010692",
+      "type": "movie",
+      "name": "The Damned",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/T/The-Damned-2025.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2025",
+      "_releaseDate": "2025-01-21",
+      "_releaseTimestamp": 1737417600000
+    },
+    {
+      "id": "tt29994753",
+      "type": "movie",
+      "name": "Oh, Canada",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/O/Oh-Canada-2024.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2025",
+      "_releaseDate": "2025-01-21",
+      "_releaseTimestamp": 1737417600000
+    },
+    {
+      "id": "tt27589902",
+      "type": "movie",
+      "name": "A Legend",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/A/A-Legend-2024.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2025",
+      "_releaseDate": "2025-01-21",
+      "_releaseTimestamp": 1737417600000
+    },
+    {
+      "id": "tt27351462",
+      "type": "movie",
+      "name": "A Whitewater Romance",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/A/A-Whitewater-Romance-2024.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2025",
+      "_releaseDate": "2025-01-21",
+      "_releaseTimestamp": 1737417600000
+    },
+    {
+      "id": "tt33885264",
+      "type": "movie",
+      "name": "Brother Orange",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/B/Brother-Orange-2025.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2025",
+      "_releaseDate": "2025-01-21",
+      "_releaseTimestamp": 1737417600000
+    },
+    {
+      "id": "tt31727947",
+      "type": "movie",
+      "name": "Falling in Love in Niagara",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/F/Falling-in-Love-in-Niagara-2024.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2025",
+      "_releaseDate": "2025-01-21",
+      "_releaseTimestamp": 1737417600000
+    },
+    {
+      "id": "tt34910018",
+      "type": "movie",
+      "name": "Sniper: The Last Stand",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/S/Sniper-The-Last-Stand-2025.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2025",
+      "_releaseDate": "2025-01-21",
+      "_releaseTimestamp": 1737417600000
+    },
+    {
+      "id": "tt27858066",
+      "type": "movie",
+      "name": "Standing on the Shoulders of Kitties",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/S/Standing-on-the-Shoulders-of-Kitties-2024.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2025",
+      "_releaseDate": "2025-01-18",
+      "_releaseTimestamp": 1737158400000
+    },
+    {
+      "id": "tt31456973",
+      "type": "movie",
+      "name": "Alarum",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/A/Alarum-2025.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2025",
+      "_releaseDate": "2025-01-17",
+      "_releaseTimestamp": 1737072000000
+    },
+    {
+      "id": "tt8790086",
+      "type": "movie",
+      "name": "Kraven the Hunter",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/K/Kraven-the-Hunter-2023.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2025",
+      "_releaseDate": "2025-01-14",
+      "_releaseTimestamp": 1736812800000
+    },
+    {
+      "id": "tt24176060",
+      "type": "movie",
+      "name": "Queer",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/Q/Queer-2025.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2025",
+      "_releaseDate": "2025-01-14",
+      "_releaseTimestamp": 1736812800000
+    },
+    {
+      "id": "tt6975842",
+      "type": "movie",
+      "name": "Bloody Axe Wound",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/B/Bloody-Axe-Wound-2024.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2025",
+      "_releaseDate": "2025-01-14",
+      "_releaseTimestamp": 1736812800000
+    },
+    {
+      "id": "tt31974129",
+      "type": "movie",
+      "name": "Man with No Past",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/M/Man-with-No-Past-2025.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2025",
+      "_releaseDate": "2025-01-14",
+      "_releaseTimestamp": 1736812800000
+    },
+    {
+      "id": "tt27244847",
+      "type": "movie",
+      "name": "Spring Breakthrough",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/S/Spring-Breakthrough-2023.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2025",
+      "_releaseDate": "2025-01-14",
+      "_releaseTimestamp": 1736812800000
+    },
+    {
+      "id": "tt14569236",
+      "type": "movie",
+      "name": "Trigger Happy",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/T/Trigger-Happy-2025.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2025",
+      "_releaseDate": "2025-01-14",
+      "_releaseTimestamp": 1736812800000
+    },
+    {
+      "id": "tt15551346",
+      "type": "movie",
+      "name": "The End",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/T/The-End-2025.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2025",
+      "_releaseDate": "2025-01-10",
+      "_releaseTimestamp": 1736467200000
+    },
+    {
+      "id": "tt21065274",
+      "type": "movie",
+      "name": "Black Diamond",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/B/Black-Diamond-2025.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2025",
+      "_releaseDate": "2025-01-10",
+      "_releaseTimestamp": 1736467200000
+    },
+    {
+      "id": "tt10449276",
+      "type": "movie",
+      "name": "Get Away",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/G/Get-Away-2024.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2025",
+      "_releaseDate": "2025-01-10",
+      "_releaseTimestamp": 1736467200000
+    },
+    {
+      "id": "tt18469390",
+      "type": "movie",
+      "name": "Laws of Man",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/L/Laws-of-Man-2025.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2025",
+      "_releaseDate": "2025-01-10",
+      "_releaseTimestamp": 1736467200000
+    },
+    {
+      "id": "tt21247132",
+      "type": "movie",
+      "name": "Meanwhile on Earth",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/M/Meanwhile-on-Earth-2024.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2025",
+      "_releaseDate": "2025-01-10",
+      "_releaseTimestamp": 1736467200000
+    },
+    {
+      "id": "tt11567502",
+      "type": "movie",
+      "name": "Roswell Delirium",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/R/Roswell-Delirium-2025.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2025",
+      "_releaseDate": "2025-01-10",
+      "_releaseTimestamp": 1736467200000
+    },
+    {
+      "id": "tt4772188",
+      "type": "movie",
+      "name": "Flow",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/F/Flow-2024.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2025",
+      "_releaseDate": "2025-01-07",
+      "_releaseTimestamp": 1736208000000
+    },
+    {
+      "id": "tt2965408",
+      "type": "movie",
+      "name": "Lost on a Mountain in Maine",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/L/Lost-on-a-Mountain-in-Maine-2024.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2025",
+      "_releaseDate": "2025-01-07",
+      "_releaseTimestamp": 1736208000000
+    },
+    {
+      "id": "tt13232552",
+      "type": "movie",
+      "name": "The Man in the White Van",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/T/The-Man-in-the-White-Van-2024.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2025",
+      "_releaseDate": "2025-01-07",
+      "_releaseTimestamp": 1736208000000
+    },
+    {
+      "id": "tt14452174",
+      "type": "movie",
+      "name": "Soundtrack to a Coup d'Etat",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/S/Soundtrack-to-a-Coup-dEtat-2024.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2025",
+      "_releaseDate": "2025-01-07",
+      "_releaseTimestamp": 1736208000000
+    },
+    {
+      "id": "tt10693740",
+      "type": "movie",
+      "name": "Kill-Fist",
+      "poster": "https://www.dvdsreleasedates.com/images/movies/K/Kill-Fist-2019.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2025",
+      "_releaseDate": "2025-01-07",
+      "_releaseTimestamp": 1736208000000
+    },
+    {
+      "id": "tt13934264",
+      "type": "movie",
+      "name": "When It Rains in LA",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/W/When-It-Rains-in-LA-2024.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2025",
+      "_releaseDate": "2025-01-07",
+      "_releaseTimestamp": 1736208000000
+    }
+  ],
+  "finalized": true,
+  "finalizedAt": "2026-09-28T22:13:27.226Z"
+}
