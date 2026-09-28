@@ -1,4 +1,3 @@
-```js
 // index.mjs
 
 import pkg from "stremio-addon-sdk";
@@ -1650,4 +1649,3 @@ builder.defineCatalogHandler(
  */
 
 export default builder;
-```
