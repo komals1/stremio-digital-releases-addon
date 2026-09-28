@@ -1,4 +1,6 @@
-// index.mjs
+import pkg from "stremio-addon-sdk";
+
+const { addonBuilder } = pkg;
 
 const BASE_URL = "https://www.dvdsreleasedates.com";
 
@@ -25,129 +27,101 @@ const MONTH_LOOKUP = Object.fromEntries(
 );
 
 // --------------------------------------------------
-// Release options
+// CACHE
 // --------------------------------------------------
-
-function buildReleaseOptions() {
-  const options = [];
-
-  // Current year through 2030
-  for (let year = 2026; year <= 2030; year++) {
-    for (const month of MONTH_NAMES) {
-      options.push(`${year} ${month}`);
-    }
-  }
-
-  return options;
-}
-
-const RELEASE_OPTIONS = buildReleaseOptions();
-
-// --------------------------------------------------
-// Cache
-// --------------------------------------------------
-
-const CACHE_TTL = 6 * 60 * 60 * 1000; // 6 hours
-const STALE_TTL = 24 * 60 * 60 * 1000; // 24 hours
 
 const cache = new Map();
 
+const CACHE_TIME = 6 * 60 * 60 * 1000;
+const STALE_TIME = 24 * 60 * 60 * 1000;
+
 // --------------------------------------------------
-// Helpers
+// URL
 // --------------------------------------------------
 
 function buildMonthUrl(year, month) {
   return `${BASE_URL}/digital-releases/${year}/${month}/`;
 }
 
-async function fetchPage(url) {
-  console.log(`🌐 Fetching: ${url}`);
+// --------------------------------------------------
+// FETCH
+// --------------------------------------------------
 
+async function fetchPage(url) {
   const response = await fetch(url, {
     headers: {
       "User-Agent":
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/131 Safari/537.36",
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/140 Safari/537.36",
+
       Accept:
-        "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
     },
   });
 
   if (!response.ok) {
     throw new Error(
-      `HTTP ${response.status} while fetching ${url}`
+      `HTTP ${response.status} ${response.statusText}`
     );
   }
 
   return await response.text();
 }
 
-function decodeHtml(value) {
-  if (!value) return "";
+// --------------------------------------------------
+// HTML HELPERS
+// --------------------------------------------------
 
-  return value
+function decodeHtml(text) {
+  return text
+    .replace(/&nbsp;/gi, " ")
     .replace(/&amp;/gi, "&")
     .replace(/&quot;/gi, '"')
     .replace(/&#39;/gi, "'")
     .replace(/&apos;/gi, "'")
-    .replace(/&lt;/gi, "<")
-    .replace(/&gt;/gi, ">")
-    .replace(/&#(\d+);/g, (_, code) =>
-      String.fromCharCode(Number(code))
-    )
-    .replace(/&#x([0-9a-f]+);/gi, (_, code) =>
-      String.fromCharCode(parseInt(code, 16))
+    .replace(
+      /&#(\d+);/g,
+      (_, code) => String.fromCharCode(Number(code))
     );
 }
 
-function stripHtml(value) {
-  if (!value) return "";
-
+function stripHtml(text) {
   return decodeHtml(
-    value
-      .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "")
-      .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, "")
+    text
+      .replace(
+        /<script[\s\S]*?<\/script>/gi,
+        ""
+      )
+      .replace(
+        /<style[\s\S]*?<\/style>/gi,
+        ""
+      )
       .replace(/<[^>]+>/g, " ")
-      .replace(/\s+/g, " ")
-      .trim()
-  );
+  )
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 // --------------------------------------------------
-// Release date parser
+// RELEASE DATE
 // --------------------------------------------------
 
-function parseReleaseDate(value) {
-  if (!value) return null;
-
-  const clean = stripHtml(value);
-
-  // Example:
-  // Tuesday September 1, 2026
-
-  const match = clean.match(
-    /(?:Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)?\s*(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{1,2}),\s*(\d{4})/i
+function parseReleaseDate(text) {
+  const match = text.match(
+    /\b(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)\s+([A-Za-z]+)\s+(\d{1,2}),\s+(\d{4})\b/i
   );
 
   if (!match) return null;
 
-  const monthName = match[1];
-  const day = Number(match[2]);
-  const year = Number(match[3]);
-
-  const month = MONTH_LOOKUP[monthName.toLowerCase()];
-
-  if (!month) return null;
-
   return {
-    year,
-    month,
-    day,
-    monthName,
+    dateText: match[0],
+    monthName: match[2],
+    day: Number(match[3]),
+    year: Number(match[4]),
   };
 }
 
 // --------------------------------------------------
-// Movie parser
+// MOVIE CELL
 // --------------------------------------------------
 
 function parseMovieCell(movieHtml, releaseDate) {
@@ -169,7 +143,9 @@ function parseMovieCell(movieHtml, releaseDate) {
 
   let linkMatch;
 
-  while ((linkMatch = linkRegex.exec(movieHtml)) !== null) {
+  while (
+    (linkMatch = linkRegex.exec(movieHtml)) !== null
+  ) {
     const linkText = stripHtml(linkMatch[1]);
 
     if (!linkText) continue;
@@ -190,7 +166,10 @@ function parseMovieCell(movieHtml, releaseDate) {
   }
 
   if (!title) {
-    console.log(`⚠️ No title found for ${imdbId}`);
+    console.log(
+      `⚠️ No title found for ${imdbId}`
+    );
+
     return null;
   }
 
@@ -228,156 +207,185 @@ function parseMovieCell(movieHtml, releaseDate) {
 }
 
 // --------------------------------------------------
-// Extract movies from page
+// EXTRACT MOVIES
 // --------------------------------------------------
 
-function extractMovies(html, selectedYear, selectedMonth) {
+function extractMovies(
+  html,
+  selectedYear,
+  selectedMonth
+) {
   const movies = [];
-  const seen = new Set();
 
-  // Find release-date sections.
-  //
-  // The site contains nested <td> elements, so we don't
-  // try to match the entire td with a simple regex.
   const releaseDateRegex =
-    /<td\b[^>]*class=['"][^'"]*\breldate\b[^'"]*['"][^>]*>/gi;
+    /<td\b[^>]*class=['"][^'"]*\breldate\b[^'"]*['"][^>]*>([\s\S]*?)<\/td>/gi;
 
-  const sections = [];
+  const releaseDates = [];
 
-  let match;
+  let releaseMatch;
 
   while (
-    (match = releaseDateRegex.exec(html)) !== null
+    (releaseMatch =
+      releaseDateRegex.exec(html)) !== null
   ) {
-    sections.push({
-      start: match.index,
-      tagStart: match.index,
-    });
-  }
-
-  console.log(
-    `📅 Release date sections found: ${sections.length}`
-  );
-
-  for (let i = 0; i < sections.length; i++) {
-    const sectionStart = sections[i].start;
-
-    const sectionEnd =
-      i + 1 < sections.length
-        ? sections[i + 1].start
-        : html.length;
-
-    const sectionHtml = html.slice(
-      sectionStart,
-      sectionEnd
-    );
-
     const dateText = stripHtml(
-      sectionHtml.slice(0, 1000)
+      releaseMatch[1]
     );
 
     const releaseDate =
       parseReleaseDate(dateText);
 
-    if (!releaseDate) {
-      console.log(
-        "⚠️ Could not parse release date section"
-      );
-      continue;
-    }
+    if (!releaseDate) continue;
 
     if (
-      releaseDate.year !== selectedYear ||
-      releaseDate.month !== selectedMonth
+      releaseDate.year !== selectedYear
     ) {
       continue;
     }
 
-    // Find every dvdcell inside this release-date section.
+    const monthNumber =
+      MONTH_LOOKUP[
+        releaseDate.monthName.toLowerCase()
+      ];
+
+    if (
+      monthNumber !== selectedMonth
+    ) {
+      continue;
+    }
+
+    releaseDates.push({
+      index: releaseMatch.index,
+
+      endIndex:
+        releaseDateRegex.lastIndex,
+
+      date: releaseDate,
+    });
+  }
+
+  console.log(
+    `📅 Release date sections found: ${releaseDates.length}`
+  );
+
+  for (
+    let i = 0;
+    i < releaseDates.length;
+    i++
+  ) {
+    const section = releaseDates[i];
+
+    const nextSection =
+      releaseDates[i + 1]?.index ??
+      html.length;
+
+    const sectionHtml = html.slice(
+      section.endIndex,
+      nextSection
+    );
+
     const movieStartRegex =
       /<td\b[^>]*class=['"][^'"]*\bdvdcell\b[^'"]*['"][^>]*>/gi;
 
     const movieStarts = [];
 
-    let movieMatch;
+    let movieStartMatch;
 
     while (
-      (movieMatch =
-        movieStartRegex.exec(sectionHtml)) !== null
+      (movieStartMatch =
+        movieStartRegex.exec(
+          sectionHtml
+        )) !== null
     ) {
-      movieStarts.push(movieMatch.index);
+      movieStarts.push(
+        movieStartMatch.index
+      );
     }
 
     console.log(
-      `   📦 ${dateText.slice(0, 60)} → ${movieStarts.length} movie cells`
+      `   📦 ${section.date.dateText} → ${movieStarts.length} movie cells`
     );
 
-    for (let j = 0; j < movieStarts.length; j++) {
-      const movieStart = movieStarts[j];
+    for (
+      let j = 0;
+      j < movieStarts.length;
+      j++
+    ) {
+      const start = movieStarts[j];
 
-      const movieEnd =
-        j + 1 < movieStarts.length
-          ? movieStarts[j + 1]
-          : sectionHtml.length;
+      const end =
+        movieStarts[j + 1] ??
+        sectionHtml.length;
 
-      const movieHtml = sectionHtml.slice(
-        movieStart,
-        movieEnd
-      );
+      const movieHtml =
+        sectionHtml.slice(start, end);
 
-      const movie = parseMovieCell(
-        movieHtml,
-        releaseDate
-      );
+      const movie =
+        parseMovieCell(
+          movieHtml,
+          section.date
+        );
 
       if (!movie) continue;
 
-      if (seen.has(movie.id)) {
-        continue;
-      }
-
-      seen.add(movie.id);
       movies.push(movie);
     }
   }
 
-  console.log(
-    `🎬 Movies extracted: ${movies.length}`
-  );
+  // Remove duplicates
+  const uniqueMovies = [];
 
-  return movies;
+  const seen = new Set();
+
+  for (const movie of movies) {
+    if (seen.has(movie.id)) {
+      continue;
+    }
+
+    seen.add(movie.id);
+    uniqueMovies.push(movie);
+  }
+
+  return uniqueMovies;
 }
 
 // --------------------------------------------------
-// Cache handling
+// LOAD MONTH
 // --------------------------------------------------
 
-async function loadMonth(year, month) {
+async function loadMonth(
+  year,
+  month
+) {
   const key = `${year}-${month}`;
+
+  const now = Date.now();
 
   const cached = cache.get(key);
 
   if (cached) {
-    const age = Date.now() - cached.timestamp;
+    const age = now - cached.timestamp;
 
-    if (age < CACHE_TTL) {
+    if (age < CACHE_TIME) {
       console.log(
-        `💾 Using fresh cache for ${key}`
+        `💾 Cache hit: ${key}`
       );
 
       return cached.movies;
     }
 
-    if (age < STALE_TTL) {
+    if (age < STALE_TIME) {
       console.log(
-        `💾 Using stale cache for ${key}`
+        `♻️ Using stale cache while refreshing: ${key}`
       );
 
-      // Refresh in background.
-      refreshMonth(year, month).catch((error) => {
+      refreshMonth(
+        year,
+        month
+      ).catch((error) => {
         console.error(
-          `❌ Background refresh failed for ${key}:`,
-          error.message
+          "❌ Background refresh failed:",
+          error
         );
       });
 
@@ -385,269 +393,265 @@ async function loadMonth(year, month) {
     }
   }
 
-  return await refreshMonth(year, month);
+  return await refreshMonth(
+    year,
+    month
+  );
 }
 
-async function refreshMonth(year, month) {
-  const key = `${year}-${month}`;
-  const url = buildMonthUrl(year, month);
+// --------------------------------------------------
+// REFRESH
+// --------------------------------------------------
 
-  try {
-    const html = await fetchPage(url);
+async function refreshMonth(
+  year,
+  month
+) {
+  const url =
+    buildMonthUrl(
+      year,
+      month
+    );
 
-    const movies = extractMovies(
+  console.log(
+    `🌐 Fetching: ${url}`
+  );
+
+  const html =
+    await fetchPage(url);
+
+  const movies =
+    extractMovies(
       html,
       year,
       month
     );
 
-    cache.set(key, {
+  cache.set(
+    `${year}-${month}`,
+    {
       timestamp: Date.now(),
       movies,
-    });
-
-    console.log(
-      `✅ Returning ${movies.length} movies`
-    );
-
-    return movies;
-  } catch (error) {
-    console.error(
-      `❌ Failed to load ${key}:`,
-      error.message
-    );
-
-    // If we have old cache, use it.
-    const cached = cache.get(key);
-
-    if (cached) {
-      console.log(
-        `⚠️ Returning old cached data for ${key}`
-      );
-
-      return cached.movies;
     }
-
-    throw error;
-  }
-}
-
-// --------------------------------------------------
-// Release option parser
-// --------------------------------------------------
-
-function parseReleaseOption(value) {
-  if (!value) return null;
-
-  const match = value.match(
-    /^(\d{4})\s+(.+)$/i
   );
 
-  if (!match) return null;
+  console.log(
+    `💾 Cached ${movies.length} movies for ${year}-${month}`
+  );
 
-  const year = Number(match[1]);
-  const monthName = match[2].trim();
-
-  const month =
-    MONTH_LOOKUP[monthName.toLowerCase()];
-
-  if (!month) return null;
-
-  return {
-    year,
-    month,
-    monthName,
-  };
+  return movies;
 }
 
 // --------------------------------------------------
-// Default release
+// YEAR OPTIONS
 // --------------------------------------------------
 
-function getDefaultRelease() {
-  const now = new Date();
-
-  return {
-    year: now.getFullYear(),
-    month: now.getMonth() + 1,
-    monthName:
-      MONTH_NAMES[now.getMonth()],
-  };
-}
+const YEAR_OPTIONS = [
+  "2026",
+  "2027",
+  "2028",
+  "2029",
+  "2030",
+];
 
 // --------------------------------------------------
-// Manifest
+// MANIFEST
 // --------------------------------------------------
 
 const manifest = {
   id: "com.digitalreleases.addon",
+
   version: "1.1.0",
+
   name: "Digital Releases",
+
   description:
     "Digital movie release calendar based on DVD Release Dates.",
+
   resources: ["catalog"],
+
   types: ["movie"],
 
   catalogs: [
     {
       type: "movie",
+
       id: "digital-releases",
+
       name: "Digital Releases",
+
+      pageSize: 100,
 
       extra: [
         {
-          name: "release",
+          name: "genre",
+
           isRequired: false,
-          options: RELEASE_OPTIONS,
+
+          options: YEAR_OPTIONS,
         },
 
         {
-          name: "search",
+          name: "month",
+
           isRequired: false,
+
+          options: MONTH_NAMES,
         },
 
         {
           name: "skip",
+
           isRequired: false,
         },
       ],
+
+      genres: YEAR_OPTIONS,
     },
   ],
-};
 
-// --------------------------------------------------
-// Catalog handler
-// --------------------------------------------------
-
-async function catalogHandler(args) {
-  console.log("");
-  console.log("========================================");
-  console.log("📚 CATALOG REQUEST");
-  console.log("========================================");
-
-  console.log(
-    "Extra:",
-    JSON.stringify(args.extra || {})
-  );
-
-  let selectedRelease =
-    args.extra?.release;
-
-  let parsedRelease =
-    parseReleaseOption(selectedRelease);
-
-  // If no release filter was selected,
-  // use the current month.
-  if (!parsedRelease) {
-    parsedRelease = getDefaultRelease();
-
-    console.log(
-      `📅 No release selected, using default: ${parsedRelease.year} ${parsedRelease.monthName}`
-    );
-  }
-
-  const {
-    year,
-    month,
-    monthName,
-  } = parsedRelease;
-
-  console.log(
-    `📅 Selected release: ${year} ${monthName}`
-  );
-
-  if (!year || !month) {
-    console.log(
-      "⚠️ Invalid release selection"
-    );
-
-    return {
-      metas: [],
-    };
-  }
-
-  try {
-    let movies = await loadMonth(
-      year,
-      month
-    );
-
-    // ------------------------------------------------
-    // Search
-    // ------------------------------------------------
-
-    const search =
-      args.extra?.search?.trim();
-
-    if (search) {
-      const searchLower =
-        search.toLowerCase();
-
-      movies = movies.filter((movie) =>
-        movie.name
-          .toLowerCase()
-          .includes(searchLower)
-      );
-
-      console.log(
-        `🔎 Search "${search}" → ${movies.length} movies`
-      );
-    }
-
-    // ------------------------------------------------
-    // Pagination
-    // ------------------------------------------------
-
-    const skip = Number(
-      args.extra?.skip || 0
-    );
-
-    const pageSize = 100;
-
-    movies = movies.slice(
-      skip,
-      skip + pageSize
-    );
-
-    console.log(
-      `📦 Returning ${movies.length} movies`
-    );
-
-    return {
-      metas: movies,
-    };
-  } catch (error) {
-    console.error(
-      "❌ Catalog error:",
-      error
-    );
-
-    return {
-      metas: [],
-    };
-  }
-}
-
-// --------------------------------------------------
-// Stremio addon interface
-// --------------------------------------------------
-
-const builder = {
-  manifest,
-
-  getInterface() {
-    return {
-      manifest,
-
-      async catalog(type, id, extra) {
-        return await catalogHandler({
-          type,
-          id,
-          extra,
-        });
-      },
-    };
+  behaviorHints: {
+    configurable: true,
+    configurationRequired: false,
   },
 };
+
+// --------------------------------------------------
+// BUILDER
+// --------------------------------------------------
+
+const builder =
+  new addonBuilder(manifest);
+
+// --------------------------------------------------
+// CATALOG HANDLER
+// --------------------------------------------------
+
+builder.defineCatalogHandler(
+  async (args) => {
+    console.log("");
+    console.log(
+      "========================================"
+    );
+    console.log(
+      "📺 CATALOG REQUEST"
+    );
+    console.log(
+      "========================================"
+    );
+
+    console.log(
+      "Type:",
+      args.type
+    );
+
+    console.log(
+      "ID:",
+      args.id
+    );
+
+    console.log(
+      "Extra:",
+      args.extra
+    );
+
+    const now =
+      new Date();
+
+    const defaultYear =
+      now.getFullYear();
+
+    const defaultMonth =
+      now.getMonth() + 1;
+
+    // Genre = YEAR
+    const year =
+      Number(
+        args.extra?.genre ||
+        defaultYear
+      );
+
+    // Month = MONTH
+    const monthName =
+      args.extra?.month ||
+      MONTH_NAMES[
+        defaultMonth - 1
+      ];
+
+    const month =
+      MONTH_LOOKUP[
+        monthName.toLowerCase()
+      ];
+
+    console.log(
+      `📅 Selected: ${year}-${String(month).padStart(2, "0")}`
+    );
+
+    if (!year || !month) {
+      console.log(
+        "⚠️ Invalid year/month"
+      );
+
+      return {
+        metas: [],
+      };
+    }
+
+    try {
+      let movies =
+        await loadMonth(
+          year,
+          month
+        );
+
+      // Optional search
+      const search =
+        args.extra?.search
+          ?.trim()
+          .toLowerCase();
+
+      if (search) {
+        movies =
+          movies.filter(
+            (movie) =>
+              movie.name
+                .toLowerCase()
+                .includes(search)
+          );
+      }
+
+      // Pagination
+      const skip =
+        Number(
+          args.extra?.skip || 0
+        );
+
+      const pageSize = 100;
+
+      movies =
+        movies.slice(
+          skip,
+          skip + pageSize
+        );
+
+      console.log(
+        `✅ Returning ${movies.length} movies`
+      );
+
+      return {
+        metas: movies,
+      };
+    } catch (error) {
+      console.error(
+        "❌ Catalog error:",
+        error
+      );
+
+      return {
+        metas: [],
+      };
+    }
+  }
+);
 
 export default builder;
