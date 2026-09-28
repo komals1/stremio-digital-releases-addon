@@ -1,3 +1,5 @@
+// index.mjs
+
 import pkg from "stremio-addon-sdk";
 
 const { addonBuilder } = pkg;
@@ -26,26 +28,75 @@ const MONTH_LOOKUP = Object.fromEntries(
   ])
 );
 
-// --------------------------------------------------
-// CACHE
-// --------------------------------------------------
+/*
+ * ============================================================
+ * BUILD RELEASE OPTIONS AUTOMATICALLY
+ * ============================================================
+ *
+ * Current month + previous 24 months.
+ *
+ * Example:
+ *
+ * 2026 Sep
+ * 2026 Aug
+ * 2026 Jul
+ * ...
+ * 2025 Jan
+ * 2024 Dec
+ * ...
+ * 2024 Sep
+ *
+ * No need to manually add years or months.
+ */
+
+const RELEASE_OPTIONS = [];
+
+const currentDate = new Date();
+
+const currentYear = currentDate.getFullYear();
+const currentMonth = currentDate.getMonth() + 1;
+
+for (let offset = 0; offset <= 24; offset++) {
+  const date = new Date(
+    currentYear,
+    currentMonth - 1 - offset,
+    1
+  );
+
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+
+  RELEASE_OPTIONS.push(
+    `${year} ${MONTH_NAMES[month - 1].slice(0, 3)}`
+  );
+}
+
+/*
+ * ============================================================
+ * CACHE
+ * ============================================================
+ */
 
 const cache = new Map();
 
-const CACHE_TIME = 6 * 60 * 60 * 1000;
-const STALE_TIME = 24 * 60 * 60 * 1000;
+const CACHE_TIME = 6 * 60 * 60 * 1000; // 6 hours
+const STALE_TIME = 24 * 60 * 60 * 1000; // 24 hours
 
-// --------------------------------------------------
-// URL
-// --------------------------------------------------
+/*
+ * ============================================================
+ * URL
+ * ============================================================
+ */
 
 function buildMonthUrl(year, month) {
   return `${BASE_URL}/digital-releases/${year}/${month}/`;
 }
 
-// --------------------------------------------------
-// FETCH
-// --------------------------------------------------
+/*
+ * ============================================================
+ * FETCH PAGE
+ * ============================================================
+ */
 
 async function fetchPage(url) {
   const response = await fetch(url, {
@@ -67,9 +118,11 @@ async function fetchPage(url) {
   return await response.text();
 }
 
-// --------------------------------------------------
-// HTML HELPERS
-// --------------------------------------------------
+/*
+ * ============================================================
+ * HTML HELPERS
+ * ============================================================
+ */
 
 function decodeHtml(text) {
   return text
@@ -101,16 +154,20 @@ function stripHtml(text) {
     .trim();
 }
 
-// --------------------------------------------------
-// RELEASE DATE
-// --------------------------------------------------
+/*
+ * ============================================================
+ * RELEASE DATE PARSER
+ * ============================================================
+ */
 
 function parseReleaseDate(text) {
   const match = text.match(
     /\b(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)\s+([A-Za-z]+)\s+(\d{1,2}),\s+(\d{4})\b/i
   );
 
-  if (!match) return null;
+  if (!match) {
+    return null;
+  }
 
   return {
     dateText: match[0],
@@ -120,11 +177,20 @@ function parseReleaseDate(text) {
   };
 }
 
-// --------------------------------------------------
-// MOVIE CELL
-// --------------------------------------------------
+/*
+ * ============================================================
+ * MOVIE CELL PARSER
+ * ============================================================
+ */
 
 function parseMovieCell(movieHtml, releaseDate) {
+  /*
+   * Find IMDb ID
+   *
+   * Example:
+   * http://www.imdb.com/title/tt33070884/
+   */
+
   const imdbMatch = movieHtml.match(
     /imdb\.com\/title\/(tt\d{7,9})/i
   );
@@ -135,6 +201,10 @@ function parseMovieCell(movieHtml, releaseDate) {
   }
 
   const imdbId = imdbMatch[1].toLowerCase();
+
+  /*
+   * Find movie title
+   */
 
   let title = null;
 
@@ -148,11 +218,21 @@ function parseMovieCell(movieHtml, releaseDate) {
   ) {
     const linkText = stripHtml(linkMatch[1]);
 
-    if (!linkText) continue;
+    if (!linkText) {
+      continue;
+    }
+
+    /*
+     * Ignore IMDb rating numbers.
+     */
 
     if (/^\d+(?:\.\d+)?$/.test(linkText)) {
       continue;
     }
+
+    /*
+     * Ignore unwanted link labels.
+     */
 
     if (
       linkText.toLowerCase() === "imdb" ||
@@ -172,6 +252,10 @@ function parseMovieCell(movieHtml, releaseDate) {
 
     return null;
   }
+
+  /*
+   * Find poster
+   */
 
   let poster = null;
 
@@ -196,6 +280,10 @@ function parseMovieCell(movieHtml, releaseDate) {
     }
   }
 
+  /*
+   * Stremio catalog item
+   */
+
   return {
     id: imdbId,
     type: "movie",
@@ -206,9 +294,11 @@ function parseMovieCell(movieHtml, releaseDate) {
   };
 }
 
-// --------------------------------------------------
-// EXTRACT MOVIES
-// --------------------------------------------------
+/*
+ * ============================================================
+ * EXTRACT MOVIES
+ * ============================================================
+ */
 
 function extractMovies(
   html,
@@ -216,6 +306,10 @@ function extractMovies(
   selectedMonth
 ) {
   const movies = [];
+
+  /*
+   * Find release date sections.
+   */
 
   const releaseDateRegex =
     /<td\b[^>]*class=['"][^'"]*\breldate\b[^'"]*['"][^>]*>([\s\S]*?)<\/td>/gi;
@@ -235,31 +329,34 @@ function extractMovies(
     const releaseDate =
       parseReleaseDate(dateText);
 
-    if (!releaseDate) continue;
-
-    if (
-      releaseDate.year !== selectedYear
-    ) {
+    if (!releaseDate) {
       continue;
     }
+
+    /*
+     * Only selected year.
+     */
+
+    if (releaseDate.year !== selectedYear) {
+      continue;
+    }
+
+    /*
+     * Only selected month.
+     */
 
     const monthNumber =
       MONTH_LOOKUP[
         releaseDate.monthName.toLowerCase()
       ];
 
-    if (
-      monthNumber !== selectedMonth
-    ) {
+    if (monthNumber !== selectedMonth) {
       continue;
     }
 
     releaseDates.push({
       index: releaseMatch.index,
-
-      endIndex:
-        releaseDateRegex.lastIndex,
-
+      endIndex: releaseDateRegex.lastIndex,
       date: releaseDate,
     });
   }
@@ -267,6 +364,10 @@ function extractMovies(
   console.log(
     `📅 Release date sections found: ${releaseDates.length}`
   );
+
+  /*
+   * Process each release date section.
+   */
 
   for (
     let i = 0;
@@ -284,6 +385,10 @@ function extractMovies(
       nextSection
     );
 
+    /*
+     * Find movie cells.
+     */
+
     const movieStartRegex =
       /<td\b[^>]*class=['"][^'"]*\bdvdcell\b[^'"]*['"][^>]*>/gi;
 
@@ -293,9 +398,8 @@ function extractMovies(
 
     while (
       (movieStartMatch =
-        movieStartRegex.exec(
-          sectionHtml
-        )) !== null
+        movieStartRegex.exec(sectionHtml)) !==
+      null
     ) {
       movieStarts.push(
         movieStartMatch.index
@@ -305,6 +409,10 @@ function extractMovies(
     console.log(
       `   📦 ${section.date.dateText} → ${movieStarts.length} movie cells`
     );
+
+    /*
+     * Parse each movie.
+     */
 
     for (
       let j = 0;
@@ -317,22 +425,28 @@ function extractMovies(
         movieStarts[j + 1] ??
         sectionHtml.length;
 
-      const movieHtml =
-        sectionHtml.slice(start, end);
+      const movieHtml = sectionHtml.slice(
+        start,
+        end
+      );
 
-      const movie =
-        parseMovieCell(
-          movieHtml,
-          section.date
-        );
+      const movie = parseMovieCell(
+        movieHtml,
+        section.date
+      );
 
-      if (!movie) continue;
+      if (!movie) {
+        continue;
+      }
 
       movies.push(movie);
     }
   }
 
-  // Remove duplicates
+  /*
+   * Remove duplicate IMDb IDs.
+   */
+
   const uniqueMovies = [];
 
   const seen = new Set();
@@ -343,134 +457,146 @@ function extractMovies(
     }
 
     seen.add(movie.id);
+
     uniqueMovies.push(movie);
   }
 
   return uniqueMovies;
 }
 
-// --------------------------------------------------
-// LOAD MONTH
-// --------------------------------------------------
+/*
+ * ============================================================
+ * LOAD MONTH
+ * ============================================================
+ */
 
-async function loadMonth(
-  year,
-  month
-) {
+async function loadMonth(year, month) {
   const key = `${year}-${month}`;
-
-  const now = Date.now();
 
   const cached = cache.get(key);
 
-  if (cached) {
-    const age = now - cached.timestamp;
+  /*
+   * Fresh cache.
+   */
 
-    if (age < CACHE_TIME) {
-      console.log(
-        `💾 Cache hit: ${key}`
-      );
+  if (
+    cached &&
+    Date.now() - cached.timestamp <
+      CACHE_TIME
+  ) {
+    console.log(
+      `💾 Cache hit: ${year}-${month}`
+    );
 
-      return cached.movies;
-    }
-
-    if (age < STALE_TIME) {
-      console.log(
-        `♻️ Using stale cache while refreshing: ${key}`
-      );
-
-      refreshMonth(
-        year,
-        month
-      ).catch((error) => {
-        console.error(
-          "❌ Background refresh failed:",
-          error
-        );
-      });
-
-      return cached.movies;
-    }
+    return cached.movies;
   }
 
-  return await refreshMonth(
-    year,
-    month
-  );
+  /*
+   * Try fresh scrape.
+   */
+
+  try {
+    const movies = await refreshMonth(
+      year,
+      month
+    );
+
+    return movies;
+  } catch (error) {
+    console.error(
+      `❌ Failed to refresh ${year}-${month}:`,
+      error.message
+    );
+
+    /*
+     * Use stale cache if available.
+     */
+
+    if (
+      cached &&
+      Date.now() - cached.timestamp <
+        STALE_TIME
+    ) {
+      console.log(
+        `♻️ Using stale cache: ${year}-${month}`
+      );
+
+      return cached.movies;
+    }
+
+    /*
+     * No usable cache.
+     */
+
+    throw error;
+  }
 }
 
-// --------------------------------------------------
-// REFRESH
-// --------------------------------------------------
+/*
+ * ============================================================
+ * REFRESH MONTH
+ * ============================================================
+ */
 
 async function refreshMonth(
   year,
   month
 ) {
-  const url =
-    buildMonthUrl(
-      year,
-      month
-    );
+  const key = `${year}-${month}`;
 
+  const url = buildMonthUrl(
+    year,
+    month
+  );
+
+  console.log("");
   console.log(
     `🌐 Fetching: ${url}`
   );
 
-  const html =
-    await fetchPage(url);
+  const html = await fetchPage(url);
 
-  const movies =
-    extractMovies(
-      html,
-      year,
-      month
-    );
-
-  cache.set(
-    `${year}-${month}`,
-    {
-      timestamp: Date.now(),
-      movies,
-    }
+  const movies = extractMovies(
+    html,
+    year,
+    month
   );
 
+  cache.set(key, {
+    timestamp: Date.now(),
+    movies,
+  });
+
   console.log(
-    `💾 Cached ${movies.length} movies for ${year}-${month}`
+    `✅ ${year}-${month}: ${movies.length} movies`
   );
 
   return movies;
 }
 
-// --------------------------------------------------
-// YEAR OPTIONS
-// --------------------------------------------------
-
-const YEAR_OPTIONS = [
-  "2026",
-  "2027",
-  "2028",
-  "2029",
-  "2030",
-];
-
-// --------------------------------------------------
-// MANIFEST
-// --------------------------------------------------
+/*
+ * ============================================================
+ * MANIFEST
+ * ============================================================
+ */
 
 const manifest = {
   id: "com.digitalreleases.addon",
 
-  version: "1.1.0",
+  version: "1.0.0",
 
   name: "Digital Releases",
 
   description:
     "Digital movie release calendar based on DVD Release Dates.",
 
-  resources: ["catalog"],
+  resources: [
+    "catalog",
+  ],
 
-  types: ["movie"],
+  types: [
+    "movie",
+  ],
 
   catalogs: [
     {
@@ -482,22 +608,30 @@ const manifest = {
 
       pageSize: 100,
 
+      /*
+       * Stremio will display these as the
+       * selector options.
+       *
+       * Example:
+       * 2026 Sep
+       * 2026 Aug
+       * 2026 Jul
+       * ...
+       */
+
       extra: [
         {
           name: "genre",
 
           isRequired: false,
 
-          options: YEAR_OPTIONS,
+          options: RELEASE_OPTIONS,
         },
 
-        {
-          name: "month",
-
-          isRequired: false,
-
-          options: MONTH_NAMES,
-        },
+        /*
+         * Keep skip for normal Stremio
+         * pagination.
+         */
 
         {
           name: "skip",
@@ -506,26 +640,32 @@ const manifest = {
         },
       ],
 
-      genres: YEAR_OPTIONS,
+      /*
+       * This matches the structure used by
+       * working Stremio addons such as
+       * the Top Seeded addon.
+       */
+
+      genres: RELEASE_OPTIONS,
     },
   ],
-
-  behaviorHints: {
-    configurable: true,
-    configurationRequired: false,
-  },
 };
 
-// --------------------------------------------------
-// BUILDER
-// --------------------------------------------------
+/*
+ * ============================================================
+ * ADDON BUILDER
+ * ============================================================
+ */
 
-const builder =
-  new addonBuilder(manifest);
+const builder = new addonBuilder(
+  manifest
+);
 
-// --------------------------------------------------
-// CATALOG HANDLER
-// --------------------------------------------------
+/*
+ * ============================================================
+ * CATALOG HANDLER
+ * ============================================================
+ */
 
 builder.defineCatalogHandler(
   async (args) => {
@@ -533,9 +673,11 @@ builder.defineCatalogHandler(
     console.log(
       "========================================"
     );
+
     console.log(
-      "📺 CATALOG REQUEST"
+      "📥 CATALOG REQUEST"
     );
+
     console.log(
       "========================================"
     );
@@ -546,7 +688,7 @@ builder.defineCatalogHandler(
     );
 
     console.log(
-      "ID:",
+      "Catalog:",
       args.id
     );
 
@@ -555,41 +697,46 @@ builder.defineCatalogHandler(
       args.extra
     );
 
-    const now =
-      new Date();
+    /*
+     * Default = current month.
+     */
 
-    const defaultYear =
-      now.getFullYear();
+    const defaultOption =
+      `${currentYear} ${MONTH_NAMES[
+        currentMonth - 1
+      ].slice(0, 3)}`;
 
-    const defaultMonth =
-      now.getMonth() + 1;
+    /*
+     * Read selected genre.
+     *
+     * Example:
+     * "2026 Sep"
+     */
 
-    // Genre = YEAR
-    const year =
-      Number(
-        args.extra?.genre ||
-        defaultYear
-      );
-
-    // Month = MONTH
-    const monthName =
-      args.extra?.month ||
-      MONTH_NAMES[
-        defaultMonth - 1
-      ];
-
-    const month =
-      MONTH_LOOKUP[
-        monthName.toLowerCase()
-      ];
+    const releaseOption =
+      args.extra?.genre ||
+      defaultOption;
 
     console.log(
-      `📅 Selected: ${year}-${String(month).padStart(2, "0")}`
+      "Selected release:",
+      releaseOption
     );
 
-    if (!year || !month) {
+    /*
+     * Parse:
+     *
+     * 2026 Sep
+     */
+
+    const match =
+      releaseOption.match(
+        /^(\d{4})\s+([A-Za-z]{3})$/
+      );
+
+    if (!match) {
       console.log(
-        "⚠️ Invalid year/month"
+        "⚠️ Invalid release option:",
+        releaseOption
       );
 
       return {
@@ -597,50 +744,62 @@ builder.defineCatalogHandler(
       };
     }
 
-    try {
-      let movies =
-        await loadMonth(
-          year,
-          month
-        );
+    const year = Number(
+      match[1]
+    );
 
-      // Optional search
-      const search =
-        args.extra?.search
-          ?.trim()
-          .toLowerCase();
+    const monthShort =
+      match[2].toLowerCase();
 
-      if (search) {
-        movies =
-          movies.filter(
-            (movie) =>
-              movie.name
-                .toLowerCase()
-                .includes(search)
-          );
-      }
+    /*
+     * Convert:
+     *
+     * Sep → 9
+     * Aug → 8
+     * Jul → 7
+     * etc.
+     */
 
-      // Pagination
-      const skip =
-        Number(
-          args.extra?.skip || 0
-        );
+    const month =
+      MONTH_NAMES.findIndex(
+        (name) =>
+          name
+            .slice(0, 3)
+            .toLowerCase() ===
+          monthShort
+      ) + 1;
 
-      const pageSize = 100;
-
-      movies =
-        movies.slice(
-          skip,
-          skip + pageSize
-        );
-
+    if (
+      !year ||
+      month < 1 ||
+      month > 12
+    ) {
       console.log(
-        `✅ Returning ${movies.length} movies`
+        "⚠️ Invalid year/month:",
+        year,
+        month
       );
 
       return {
-        metas: movies,
+        metas: [],
       };
+    }
+
+    console.log(
+      `🔎 Loading releases for ${year}-${month}`
+    );
+
+    /*
+     * Load the selected month.
+     */
+
+    let movies;
+
+    try {
+      movies = await loadMonth(
+        year,
+        month
+      );
     } catch (error) {
       console.error(
         "❌ Catalog error:",
@@ -651,7 +810,50 @@ builder.defineCatalogHandler(
         metas: [],
       };
     }
+
+    /*
+     * Stremio pagination.
+     */
+
+    const skip = Math.max(
+      0,
+      Number(args.extra?.skip || 0)
+    );
+
+    const pageSize = 100;
+
+    const paginatedMovies =
+      movies.slice(
+        skip,
+        skip + pageSize
+      );
+
+    console.log(
+      `📦 Total movies: ${movies.length}`
+    );
+
+    console.log(
+      `📄 Returning: ${paginatedMovies.length}`
+    );
+
+    console.log(
+      `⏭️ Skip: ${skip}`
+    );
+
+    /*
+     * Return catalog.
+     */
+
+    return {
+      metas: paginatedMovies,
+    };
   }
 );
+
+/*
+ * ============================================================
+ * EXPORT
+ * ============================================================
+ */
 
 export default builder;
