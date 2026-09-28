@@ -1358,11 +1358,8 @@ const manifest = {
    * after deployment.
    */
 
-  logo:
-    "https://YOUR-RENDER-URL/logo.png",
-
-  background:
-    "https://YOUR-RENDER-URL/background.jpg",
+logo: "https://raw.githubusercontent.com/komals1/stremio-digital-releases-addon/main/logo.png",
+background: "https://raw.githubusercontent.com/komals1/stremio-digital-releases-addon/main/background.jpg",
 
   resources: [
     "catalog",
