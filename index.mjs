@@ -1,9 +1,5 @@
 // index.mjs
 
-import pkg from "stremio-addon-sdk";
-
-const { addonBuilder } = pkg;
-
 const BASE_URL = "https://www.dvdsreleasedates.com";
 
 const MONTH_NAMES = [
@@ -28,101 +24,133 @@ const MONTH_LOOKUP = Object.fromEntries(
   ])
 );
 
+// --------------------------------------------------
+// Release options
+// --------------------------------------------------
+
+function buildReleaseOptions() {
+  const options = [];
+
+  // Current year through 2030
+  for (let year = 2026; year <= 2030; year++) {
+    for (const month of MONTH_NAMES) {
+      options.push(`${year} ${month}`);
+    }
+  }
+
+  return options;
+}
+
+const RELEASE_OPTIONS = buildReleaseOptions();
+
+// --------------------------------------------------
 // Cache
+// --------------------------------------------------
+
+const CACHE_TTL = 6 * 60 * 60 * 1000; // 6 hours
+const STALE_TTL = 24 * 60 * 60 * 1000; // 24 hours
+
 const cache = new Map();
 
-const CACHE_TIME = 6 * 60 * 60 * 1000;
-const STALE_TIME = 24 * 60 * 60 * 1000;
-
-// ------------------------------------------------------------
-// URL
-// ------------------------------------------------------------
+// --------------------------------------------------
+// Helpers
+// --------------------------------------------------
 
 function buildMonthUrl(year, month) {
   return `${BASE_URL}/digital-releases/${year}/${month}/`;
 }
 
-// ------------------------------------------------------------
-// Fetch
-// ------------------------------------------------------------
-
 async function fetchPage(url) {
+  console.log(`🌐 Fetching: ${url}`);
+
   const response = await fetch(url, {
     headers: {
       "User-Agent":
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/140 Safari/537.36",
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/131 Safari/537.36",
       Accept:
-        "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+        "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
     },
   });
 
   if (!response.ok) {
     throw new Error(
-      `HTTP ${response.status} ${response.statusText}`
+      `HTTP ${response.status} while fetching ${url}`
     );
   }
 
   return await response.text();
 }
 
-// ------------------------------------------------------------
-// HTML helpers
-// ------------------------------------------------------------
+function decodeHtml(value) {
+  if (!value) return "";
 
-function decodeHtml(text) {
-  return text
-    .replace(/&nbsp;/gi, " ")
+  return value
     .replace(/&amp;/gi, "&")
     .replace(/&quot;/gi, '"')
     .replace(/&#39;/gi, "'")
     .replace(/&apos;/gi, "'")
+    .replace(/&lt;/gi, "<")
+    .replace(/&gt;/gi, ">")
     .replace(/&#(\d+);/g, (_, code) =>
       String.fromCharCode(Number(code))
+    )
+    .replace(/&#x([0-9a-f]+);/gi, (_, code) =>
+      String.fromCharCode(parseInt(code, 16))
     );
 }
 
-function stripHtml(text) {
+function stripHtml(value) {
+  if (!value) return "";
+
   return decodeHtml(
-    text
-      .replace(/<script[\s\S]*?<\/script>/gi, "")
-      .replace(/<style[\s\S]*?<\/style>/gi, "")
+    value
+      .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "")
+      .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, "")
       .replace(/<[^>]+>/g, " ")
-  )
-    .replace(/\s+/g, " ")
-    .trim();
+      .replace(/\s+/g, " ")
+      .trim()
+  );
 }
 
-// ------------------------------------------------------------
+// --------------------------------------------------
 // Release date parser
-// ------------------------------------------------------------
+// --------------------------------------------------
 
-function parseReleaseDate(text) {
-  const match = text.match(
-    /\b(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)\s+([A-Za-z]+)\s+(\d{1,2}),\s+(\d{4})\b/i
+function parseReleaseDate(value) {
+  if (!value) return null;
+
+  const clean = stripHtml(value);
+
+  // Example:
+  // Tuesday September 1, 2026
+
+  const match = clean.match(
+    /(?:Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)?\s*(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{1,2}),\s*(\d{4})/i
   );
 
-  if (!match) {
-    return null;
-  }
+  if (!match) return null;
+
+  const monthName = match[1];
+  const day = Number(match[2]);
+  const year = Number(match[3]);
+
+  const month = MONTH_LOOKUP[monthName.toLowerCase()];
+
+  if (!month) return null;
 
   return {
-    dateText: match[0],
-    monthName: match[2],
-    day: Number(match[3]),
-    year: Number(match[4]),
+    year,
+    month,
+    day,
+    monthName,
   };
 }
 
-// ------------------------------------------------------------
-// Parse one movie
-// ------------------------------------------------------------
-
+// --------------------------------------------------
+// Movie parser
+// --------------------------------------------------
 
 function parseMovieCell(movieHtml, releaseDate) {
-  // ----------------------------------------------------------
-  // IMDb ID
-  // ----------------------------------------------------------
-
   const imdbMatch = movieHtml.match(
     /imdb\.com\/title\/(tt\d{7,9})/i
   );
@@ -134,20 +162,7 @@ function parseMovieCell(movieHtml, releaseDate) {
 
   const imdbId = imdbMatch[1].toLowerCase();
 
-  // ----------------------------------------------------------
-  // Movie title
-  // ----------------------------------------------------------
-
   let title = null;
-
-  // The DVD Release Dates site has movie links like:
-  //
-  // <a href='/movies/12812/the-brink-of-war'>
-  //   The Brink of War
-  // </a>
-  //
-  // Instead of depending on the exact URL, find the first
-  // meaningful link containing text.
 
   const linkRegex =
     /<a\b[^>]*>([\s\S]*?)<\/a>/gi;
@@ -157,16 +172,12 @@ function parseMovieCell(movieHtml, releaseDate) {
   while ((linkMatch = linkRegex.exec(movieHtml)) !== null) {
     const linkText = stripHtml(linkMatch[1]);
 
-    if (!linkText) {
-      continue;
-    }
+    if (!linkText) continue;
 
-    // Ignore the IMDb rating link.
     if (/^\d+(?:\.\d+)?$/.test(linkText)) {
       continue;
     }
 
-    // Ignore common navigation/link text.
     if (
       linkText.toLowerCase() === "imdb" ||
       linkText.toLowerCase() === "trailer"
@@ -179,15 +190,9 @@ function parseMovieCell(movieHtml, releaseDate) {
   }
 
   if (!title) {
-    console.log(
-      `⚠️ No title found for ${imdbId}`
-    );
+    console.log(`⚠️ No title found for ${imdbId}`);
     return null;
   }
-
-  // ----------------------------------------------------------
-  // Poster
-  // ----------------------------------------------------------
 
   let poster = null;
 
@@ -212,10 +217,6 @@ function parseMovieCell(movieHtml, releaseDate) {
     }
   }
 
-  // ----------------------------------------------------------
-  // Result
-  // ----------------------------------------------------------
-
   return {
     id: imdbId,
     type: "movie",
@@ -226,163 +227,156 @@ function parseMovieCell(movieHtml, releaseDate) {
   };
 }
 
-
-// ------------------------------------------------------------
-// Extract movies
-// ------------------------------------------------------------
+// --------------------------------------------------
+// Extract movies from page
+// --------------------------------------------------
 
 function extractMovies(html, selectedYear, selectedMonth) {
   const movies = [];
+  const seen = new Set();
 
-  // Find release-date cells.
+  // Find release-date sections.
   //
-  // Example:
-  // <td class='reldate past'>
-  // Tuesday September 1, 2026
-  // </td>
+  // The site contains nested <td> elements, so we don't
+  // try to match the entire td with a simple regex.
   const releaseDateRegex =
-    /<td\b[^>]*class=['"][^'"]*\breldate\b[^'"]*['"][^>]*>([\s\S]*?)<\/td>/gi;
+    /<td\b[^>]*class=['"][^'"]*\breldate\b[^'"]*['"][^>]*>/gi;
 
-  const releaseDates = [];
+  const sections = [];
 
-  let releaseMatch;
+  let match;
 
-  while ((releaseMatch = releaseDateRegex.exec(html)) !== null) {
-    const dateText = stripHtml(releaseMatch[1]);
-    const releaseDate = parseReleaseDate(dateText);
-
-    if (!releaseDate) {
-      continue;
-    }
-
-    if (releaseDate.year !== selectedYear) {
-      continue;
-    }
-
-    const monthNumber =
-      MONTH_LOOKUP[releaseDate.monthName.toLowerCase()];
-
-    if (monthNumber !== selectedMonth) {
-      continue;
-    }
-
-    releaseDates.push({
-      index: releaseMatch.index,
-      endIndex: releaseDateRegex.lastIndex,
-      date: releaseDate,
+  while (
+    (match = releaseDateRegex.exec(html)) !== null
+  ) {
+    sections.push({
+      start: match.index,
+      tagStart: match.index,
     });
   }
 
   console.log(
-    `📅 Release date sections found: ${releaseDates.length}`
+    `📅 Release date sections found: ${sections.length}`
   );
 
-  // Process each release-date section.
-  for (let i = 0; i < releaseDates.length; i++) {
-    const section = releaseDates[i];
+  for (let i = 0; i < sections.length; i++) {
+    const sectionStart = sections[i].start;
 
-    const nextSection =
-      releaseDates[i + 1]?.index ?? html.length;
+    const sectionEnd =
+      i + 1 < sections.length
+        ? sections[i + 1].start
+        : html.length;
 
     const sectionHtml = html.slice(
-      section.endIndex,
-      nextSection
+      sectionStart,
+      sectionEnd
     );
 
-    // Find every dvdcell start.
+    const dateText = stripHtml(
+      sectionHtml.slice(0, 1000)
+    );
+
+    const releaseDate =
+      parseReleaseDate(dateText);
+
+    if (!releaseDate) {
+      console.log(
+        "⚠️ Could not parse release date section"
+      );
+      continue;
+    }
+
+    if (
+      releaseDate.year !== selectedYear ||
+      releaseDate.month !== selectedMonth
+    ) {
+      continue;
+    }
+
+    // Find every dvdcell inside this release-date section.
     const movieStartRegex =
       /<td\b[^>]*class=['"][^'"]*\bdvdcell\b[^'"]*['"][^>]*>/gi;
 
     const movieStarts = [];
 
-    let movieStartMatch;
+    let movieMatch;
 
     while (
-      (movieStartMatch = movieStartRegex.exec(sectionHtml)) !==
-      null
+      (movieMatch =
+        movieStartRegex.exec(sectionHtml)) !== null
     ) {
-      movieStarts.push(movieStartMatch.index);
+      movieStarts.push(movieMatch.index);
     }
 
     console.log(
-      `   📦 ${section.date.dateText} → ${movieStarts.length} movie cells`
+      `   📦 ${dateText.slice(0, 60)} → ${movieStarts.length} movie cells`
     );
 
-    // Extract each movie cell by slicing from one dvdcell
-    // to the next dvdcell.
     for (let j = 0; j < movieStarts.length; j++) {
-      const start = movieStarts[j];
+      const movieStart = movieStarts[j];
 
-      const end =
-        movieStarts[j + 1] ?? sectionHtml.length;
+      const movieEnd =
+        j + 1 < movieStarts.length
+          ? movieStarts[j + 1]
+          : sectionHtml.length;
 
-      const movieHtml = sectionHtml.slice(start, end);
+      const movieHtml = sectionHtml.slice(
+        movieStart,
+        movieEnd
+      );
 
       const movie = parseMovieCell(
         movieHtml,
-        section.date
+        releaseDate
       );
 
-      if (!movie) {
+      if (!movie) continue;
+
+      if (seen.has(movie.id)) {
         continue;
       }
 
+      seen.add(movie.id);
       movies.push(movie);
     }
   }
 
-  // Remove duplicate IMDb IDs.
-  const uniqueMovies = [];
-  const seen = new Set();
+  console.log(
+    `🎬 Movies extracted: ${movies.length}`
+  );
 
-  for (const movie of movies) {
-    if (seen.has(movie.id)) {
-      continue;
-    }
-
-    seen.add(movie.id);
-    uniqueMovies.push(movie);
-  }
-
-  return uniqueMovies;
+  return movies;
 }
 
-// ------------------------------------------------------------
-// Load month
-// ------------------------------------------------------------
+// --------------------------------------------------
+// Cache handling
+// --------------------------------------------------
 
 async function loadMonth(year, month) {
-  const cacheKey = `${year}-${month}`;
-  const now = Date.now();
+  const key = `${year}-${month}`;
 
-  const cached = cache.get(cacheKey);
+  const cached = cache.get(key);
 
   if (cached) {
-    const age = now - cached.timestamp;
+    const age = Date.now() - cached.timestamp;
 
-    if (age < CACHE_TIME) {
+    if (age < CACHE_TTL) {
       console.log(
-        `💾 Using cached data for ${year}-${String(month).padStart(
-          2,
-          "0"
-        )}`
+        `💾 Using fresh cache for ${key}`
       );
 
       return cached.movies;
     }
 
-    if (age < STALE_TIME) {
+    if (age < STALE_TTL) {
       console.log(
-        `💾 Using stale cache for ${year}-${String(month).padStart(
-          2,
-          "0"
-        )}`
+        `💾 Using stale cache for ${key}`
       );
 
       // Refresh in background.
       refreshMonth(year, month).catch((error) => {
         console.error(
-          "⚠️ Background refresh failed:",
+          `❌ Background refresh failed for ${key}:`,
           error.message
         );
       });
@@ -394,54 +388,105 @@ async function loadMonth(year, month) {
   return await refreshMonth(year, month);
 }
 
-// ------------------------------------------------------------
-// Refresh month
-// ------------------------------------------------------------
-
 async function refreshMonth(year, month) {
+  const key = `${year}-${month}`;
   const url = buildMonthUrl(year, month);
 
-  console.log("");
-  console.log(`📀 Loading: ${url}`);
+  try {
+    const html = await fetchPage(url);
 
-  const html = await fetchPage(url);
+    const movies = extractMovies(
+      html,
+      year,
+      month
+    );
 
-  console.log(`📄 HTML size: ${html.length} characters`);
+    cache.set(key, {
+      timestamp: Date.now(),
+      movies,
+    });
 
-  const movies = extractMovies(
-    html,
-    year,
-    month
-  );
+    console.log(
+      `✅ Returning ${movies.length} movies`
+    );
 
-  console.log(`🎬 Movies extracted: ${movies.length}`);
+    return movies;
+  } catch (error) {
+    console.error(
+      `❌ Failed to load ${key}:`,
+      error.message
+    );
 
-  cache.set(`${year}-${month}`, {
-    timestamp: Date.now(),
-    movies,
-  });
+    // If we have old cache, use it.
+    const cached = cache.get(key);
 
-  return movies;
+    if (cached) {
+      console.log(
+        `⚠️ Returning old cached data for ${key}`
+      );
+
+      return cached.movies;
+    }
+
+    throw error;
+  }
 }
 
-// ------------------------------------------------------------
+// --------------------------------------------------
+// Release option parser
+// --------------------------------------------------
+
+function parseReleaseOption(value) {
+  if (!value) return null;
+
+  const match = value.match(
+    /^(\d{4})\s+(.+)$/i
+  );
+
+  if (!match) return null;
+
+  const year = Number(match[1]);
+  const monthName = match[2].trim();
+
+  const month =
+    MONTH_LOOKUP[monthName.toLowerCase()];
+
+  if (!month) return null;
+
+  return {
+    year,
+    month,
+    monthName,
+  };
+}
+
+// --------------------------------------------------
+// Default release
+// --------------------------------------------------
+
+function getDefaultRelease() {
+  const now = new Date();
+
+  return {
+    year: now.getFullYear(),
+    month: now.getMonth() + 1,
+    monthName:
+      MONTH_NAMES[now.getMonth()],
+  };
+}
+
+// --------------------------------------------------
 // Manifest
-// ------------------------------------------------------------
+// --------------------------------------------------
 
 const manifest = {
   id: "com.digitalreleases.addon",
-  version: "1.0.0",
+  version: "1.1.0",
   name: "Digital Releases",
   description:
     "Digital movie release calendar based on DVD Release Dates.",
-
-  resources: [
-    "catalog",
-  ],
-
-  types: [
-    "movie",
-  ],
+  resources: ["catalog"],
+  types: ["movie"],
 
   catalogs: [
     {
@@ -451,21 +496,9 @@ const manifest = {
 
       extra: [
         {
-          name: "year",
-          isRequired: true,
-          options: [
-            "2026",
-            "2027",
-            "2028",
-            "2029",
-            "2030",
-          ],
-        },
-
-        {
-          name: "month",
-          isRequired: true,
-          options: MONTH_NAMES,
+          name: "release",
+          isRequired: false,
+          options: RELEASE_OPTIONS,
         },
 
         {
@@ -482,40 +515,51 @@ const manifest = {
   ],
 };
 
-// ------------------------------------------------------------
-// Addon
-// ------------------------------------------------------------
-
-const builder = new addonBuilder(manifest);
-
-// ------------------------------------------------------------
+// --------------------------------------------------
 // Catalog handler
-// ------------------------------------------------------------
+// --------------------------------------------------
 
-builder.defineCatalogHandler(async (args) => {
+async function catalogHandler(args) {
   console.log("");
   console.log("========================================");
-  console.log("📺 CATALOG REQUEST");
+  console.log("📚 CATALOG REQUEST");
   console.log("========================================");
 
-  console.log("Type:", args.type);
-  console.log("ID:", args.id);
-  console.log("Extra:", args.extra);
+  console.log(
+    "Extra:",
+    JSON.stringify(args.extra || {})
+  );
 
-  const year = Number(args.extra?.year);
+  let selectedRelease =
+    args.extra?.release;
 
-  const monthName =
-    args.extra?.month || "January";
+  let parsedRelease =
+    parseReleaseOption(selectedRelease);
 
-  const month =
-    MONTH_LOOKUP[monthName.toLowerCase()];
+  // If no release filter was selected,
+  // use the current month.
+  if (!parsedRelease) {
+    parsedRelease = getDefaultRelease();
+
+    console.log(
+      `📅 No release selected, using default: ${parsedRelease.year} ${parsedRelease.monthName}`
+    );
+  }
+
+  const {
+    year,
+    month,
+    monthName,
+  } = parsedRelease;
 
   console.log(
-    `📅 Selected: ${year}-${String(month).padStart(2, "0")}`
+    `📅 Selected release: ${year} ${monthName}`
   );
 
   if (!year || !month) {
-    console.log("❌ Invalid year or month");
+    console.log(
+      "⚠️ Invalid release selection"
+    );
 
     return {
       metas: [],
@@ -528,19 +572,32 @@ builder.defineCatalogHandler(async (args) => {
       month
     );
 
-    // Search support
+    // ------------------------------------------------
+    // Search
+    // ------------------------------------------------
+
     const search =
-      args.extra?.search?.trim().toLowerCase();
+      args.extra?.search?.trim();
 
     if (search) {
+      const searchLower =
+        search.toLowerCase();
+
       movies = movies.filter((movie) =>
         movie.name
           .toLowerCase()
-          .includes(search)
+          .includes(searchLower)
+      );
+
+      console.log(
+        `🔎 Search "${search}" → ${movies.length} movies`
       );
     }
 
+    // ------------------------------------------------
     // Pagination
+    // ------------------------------------------------
+
     const skip = Number(
       args.extra?.skip || 0
     );
@@ -553,7 +610,7 @@ builder.defineCatalogHandler(async (args) => {
     );
 
     console.log(
-      `✅ Returning ${movies.length} movies`
+      `📦 Returning ${movies.length} movies`
     );
 
     return {
@@ -569,6 +626,28 @@ builder.defineCatalogHandler(async (args) => {
       metas: [],
     };
   }
-});
+}
+
+// --------------------------------------------------
+// Stremio addon interface
+// --------------------------------------------------
+
+const builder = {
+  manifest,
+
+  getInterface() {
+    return {
+      manifest,
+
+      async catalog(type, id, extra) {
+        return await catalogHandler({
+          type,
+          id,
+          extra,
+        });
+      },
+    };
+  },
+};
 
 export default builder;
