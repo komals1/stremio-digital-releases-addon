@@ -460,7 +460,7 @@ function extractMovies(
 
     uniqueMovies.push(movie);
   }
-
+uniqueMovies.reverse();
   return uniqueMovies;
 }
 
