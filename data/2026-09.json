@@ -1,0 +1,308 @@
+{
+  "year": 2026,
+  "month": 9,
+  "monthName": "September",
+  "scrapedAt": "2026-09-28T22:11:12.207Z",
+  "movies": [
+    {
+      "id": "tt29494959",
+      "type": "movie",
+      "name": "The Deputy",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/T/The-Deputy-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-09-25",
+      "_releaseTimestamp": 1790294400000
+    },
+    {
+      "id": "tt22526100",
+      "type": "movie",
+      "name": "The Love Hypothesis",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/T/The-Love-Hypothesis-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-09-23",
+      "_releaseTimestamp": 1790121600000
+    },
+    {
+      "id": "tt8820258",
+      "type": "movie",
+      "name": "Super Troopers 3",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/S/Super-Troopers-3-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-09-22",
+      "_releaseTimestamp": 1790035200000
+    },
+    {
+      "id": "tt33305867",
+      "type": "movie",
+      "name": "Spa Weekend",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/S/Spa-Weekend-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-09-22",
+      "_releaseTimestamp": 1790035200000
+    },
+    {
+      "id": "tt7734244",
+      "type": "movie",
+      "name": "The Magic Faraway Tree",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/T/The-Magic-Faraway-Tree-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-09-22",
+      "_releaseTimestamp": 1790035200000
+    },
+    {
+      "id": "tt36893729",
+      "type": "movie",
+      "name": "Ice Cream Man",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/I/Ice-Cream-Man-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-09-22",
+      "_releaseTimestamp": 1790035200000
+    },
+    {
+      "id": "tt6628920",
+      "type": "movie",
+      "name": "Idiots",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/I/Idiots-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-09-22",
+      "_releaseTimestamp": 1790035200000
+    },
+    {
+      "id": "tt12446086",
+      "type": "movie",
+      "name": "Legend of the White Dragon",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/L/Legend-of-the-White-Dragon-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-09-22",
+      "_releaseTimestamp": 1790035200000
+    },
+    {
+      "id": "tt37971717",
+      "type": "movie",
+      "name": "One Last Shot",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/O/One-Last-Shot.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-09-22",
+      "_releaseTimestamp": 1790035200000
+    },
+    {
+      "id": "tt35298123",
+      "type": "movie",
+      "name": "Teenage Sex and Death at Camp Miasma",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/T/Teenage-Sex-and-Death-at-Camp-Miasma-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-09-18",
+      "_releaseTimestamp": 1789689600000
+    },
+    {
+      "id": "tt27165187",
+      "type": "movie",
+      "name": "The End of Oak Street",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/T/The-End-of-Oak-Street-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-09-15",
+      "_releaseTimestamp": 1789430400000
+    },
+    {
+      "id": "tt33095251",
+      "type": "movie",
+      "name": "Tony",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/T/Tony-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-09-15",
+      "_releaseTimestamp": 1789430400000
+    },
+    {
+      "id": "tt27706593",
+      "type": "movie",
+      "name": "The Rivals of Amziah King",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/T/The-Rivals-of-Amziah-King-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-09-15",
+      "_releaseTimestamp": 1789430400000
+    },
+    {
+      "id": "tt32499466",
+      "type": "movie",
+      "name": "Finding Emily",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/F/Finding-Emily-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-09-15",
+      "_releaseTimestamp": 1789430400000
+    },
+    {
+      "id": "tt35519455",
+      "type": "movie",
+      "name": "It Ends",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/I/It-Ends-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-09-15",
+      "_releaseTimestamp": 1789430400000
+    },
+    {
+      "id": "tt38953026",
+      "type": "movie",
+      "name": "Lion Fist",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/L/Lion-Fist-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-09-15",
+      "_releaseTimestamp": 1789430400000
+    },
+    {
+      "id": "tt34895535",
+      "type": "movie",
+      "name": "Nimrods",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/N/Nimrods-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-09-15",
+      "_releaseTimestamp": 1789430400000
+    },
+    {
+      "id": "tt33253206",
+      "type": "movie",
+      "name": "The Last Kiss",
+      "poster": "https://www.dvdsreleasedates.com/images/movies/T/The-Last-Kiss-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-09-15",
+      "_releaseTimestamp": 1789430400000
+    },
+    {
+      "id": "tt33512134",
+      "type": "movie",
+      "name": "Drive Through Fire",
+      "poster": "https://www.dvdsreleasedates.com/images/movies/D/Drive-Through-Fire-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-09-11",
+      "_releaseTimestamp": 1789084800000
+    },
+    {
+      "id": "tt28224861",
+      "type": "movie",
+      "name": "Knightfall",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/K/Knightfall-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-09-11",
+      "_releaseTimestamp": 1789084800000
+    },
+    {
+      "id": "tt27419466",
+      "type": "movie",
+      "name": "Moana",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/M/Moana-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-09-08",
+      "_releaseTimestamp": 1788825600000
+    },
+    {
+      "id": "tt32338669",
+      "type": "movie",
+      "name": "Mutiny",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/M/Mutiny-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-09-08",
+      "_releaseTimestamp": 1788825600000
+    },
+    {
+      "id": "tt37853455",
+      "type": "movie",
+      "name": "One Night Only",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/O/One-Night-Only-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-09-08",
+      "_releaseTimestamp": 1788825600000
+    },
+    {
+      "id": "tt38503564",
+      "type": "movie",
+      "name": "Cookie Queens",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/C/Cookie-Queens-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-09-08",
+      "_releaseTimestamp": 1788825600000
+    },
+    {
+      "id": "tt14119302",
+      "type": "movie",
+      "name": "Hot Spot",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/H/Hot-Spot-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-09-08",
+      "_releaseTimestamp": 1788825600000
+    },
+    {
+      "id": "tt6633934",
+      "type": "movie",
+      "name": "Bad Counselors",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/B/Bad-Counselors-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-09-04",
+      "_releaseTimestamp": 1788480000000
+    },
+    {
+      "id": "tt33070884",
+      "type": "movie",
+      "name": "The Brink of War",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/T/The-Brink-of-War-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-09-01",
+      "_releaseTimestamp": 1788220800000
+    },
+    {
+      "id": "tt32332915",
+      "type": "movie",
+      "name": "I Want Your Sex",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/I/I-Want-Your-Sex-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-09-01",
+      "_releaseTimestamp": 1788220800000
+    },
+    {
+      "id": "tt35060353",
+      "type": "movie",
+      "name": "The Wrong Girls",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/T/The-Wrong-Girls-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-09-01",
+      "_releaseTimestamp": 1788220800000
+    },
+    {
+      "id": "tt36948232",
+      "type": "movie",
+      "name": "Just Play Dead",
+      "poster": "https://www.dvdsreleasedates.com/images/movies/J/Just-Play-Dead-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-09-01",
+      "_releaseTimestamp": 1788220800000
+    }
+  ]
+}
