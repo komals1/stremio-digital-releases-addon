@@ -2,8 +2,38 @@
   "year": 2026,
   "month": 9,
   "monthName": "September",
-  "scrapedAt": "2026-09-28T22:11:12.207Z",
+  "scrapedAt": "2026-09-30T22:34:53.544Z",
   "movies": [
+    {
+      "id": "tt1756855",
+      "type": "movie",
+      "name": "Coyote vs. Acme",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/C/Coyote-vs.-Acme-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-09-29",
+      "_releaseTimestamp": 1790640000000
+    },
+    {
+      "id": "tt29356163",
+      "type": "movie",
+      "name": "PAW Patrol: The Dino Movie",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/P/PAW-Patrol-The-Dino-Movie-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-09-29",
+      "_releaseTimestamp": 1790640000000
+    },
+    {
+      "id": "tt36983905",
+      "type": "movie",
+      "name": "The Uprising",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/T/The-Uprising-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-09-29",
+      "_releaseTimestamp": 1790640000000
+    },
     {
       "id": "tt29494959",
       "type": "movie",
