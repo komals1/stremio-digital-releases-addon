@@ -2,8 +2,168 @@
   "year": 2026,
   "month": 10,
   "monthName": "October",
-  "scrapedAt": "2026-10-03T16:34:38.933Z",
+  "scrapedAt": "2026-10-06T22:20:18.491Z",
   "movies": [
+    {
+      "id": "tt22084616",
+      "type": "movie",
+      "name": "Spider-Man: Brand New Day",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/S/Spider-Man-Brand-New-Day-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-10-06",
+      "_releaseTimestamp": 1791244800000
+    },
+    {
+      "id": "tt32393988",
+      "type": "movie",
+      "name": "Insidious: Out of the Further",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/I/Insidious-Out-of-the-Further-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-10-06",
+      "_releaseTimestamp": 1791244800000
+    },
+    {
+      "id": "tt31192372",
+      "type": "movie",
+      "name": "Fall 2: Deadpoint",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/F/Fall-2-Deadpoint-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-10-06",
+      "_releaseTimestamp": 1791244800000
+    },
+    {
+      "id": "tt32268691",
+      "type": "movie",
+      "name": "Onslaught",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/O/Onslaught-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-10-06",
+      "_releaseTimestamp": 1791244800000
+    },
+    {
+      "id": "tt32298494",
+      "type": "movie",
+      "name": "Late Fame",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/L/Late-Fame-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-10-06",
+      "_releaseTimestamp": 1791244800000
+    },
+    {
+      "id": "tt10433222",
+      "type": "movie",
+      "name": "A Merry Christmas Match",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/A/A-Merry-Christmas-Match-2019.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-10-06",
+      "_releaseTimestamp": 1791244800000
+    },
+    {
+      "id": "tt6523546",
+      "type": "movie",
+      "name": "American Summer",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/A/American-Summer-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-10-06",
+      "_releaseTimestamp": 1791244800000
+    },
+    {
+      "id": "tt9202096",
+      "type": "movie",
+      "name": "Christmas Bells Are Ringing",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/C/Christmas-Bells-Are-Ringing-2018.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-10-06",
+      "_releaseTimestamp": 1791244800000
+    },
+    {
+      "id": "tt7038632",
+      "type": "movie",
+      "name": "Christmas Festival of Ice",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/C/Christmas-Festival-of-Ice-2017.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-10-06",
+      "_releaseTimestamp": 1791244800000
+    },
+    {
+      "id": "tt34385135",
+      "type": "movie",
+      "name": "Colony",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/C/Colony-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-10-06",
+      "_releaseTimestamp": 1791244800000
+    },
+    {
+      "id": "tt16114052",
+      "type": "movie",
+      "name": "Dolph: Unbreakable",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/D/Dolph-Unbreakable-2025.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-10-06",
+      "_releaseTimestamp": 1791244800000
+    },
+    {
+      "id": "tt6879446",
+      "type": "movie",
+      "name": "Hidden Strike",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/H/Hidden-Strike-2023.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-10-06",
+      "_releaseTimestamp": 1791244800000
+    },
+    {
+      "id": "tt9032562",
+      "type": "movie",
+      "name": "Homegrown Christmas",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/H/Homegrown-Christmas-2018.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-10-06",
+      "_releaseTimestamp": 1791244800000
+    },
+    {
+      "id": "tt9168384",
+      "type": "movie",
+      "name": "Jingle Around the Clock",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/J/Jingle-Around-the-Clock-2018.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-10-06",
+      "_releaseTimestamp": 1791244800000
+    },
+    {
+      "id": "tt10571920",
+      "type": "movie",
+      "name": "Nostalgic Christmas",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/N/Nostalgic-Christmas-2019.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-10-06",
+      "_releaseTimestamp": 1791244800000
+    },
+    {
+      "id": "tt27766440",
+      "type": "movie",
+      "name": "The Salt Path",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/T/The-Salt-Path-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-10-06",
+      "_releaseTimestamp": 1791244800000
+    },
     {
       "id": "tt37185884",
       "type": "movie",
