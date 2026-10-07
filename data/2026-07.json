@@ -1,0 +1,180 @@
+{
+  "year": 2026,
+  "month": 7,
+  "monthName": "July",
+  "scrapedAt": "2026-10-07T02:44:04.847Z",
+  "movies": [
+    {
+      "id": "tt32820897",
+      "type": "movie",
+      "name": "Demon Slayer: Kimetsu no Yaiba - Infinity Castle",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/D/Demon-Slayer-Kimetsu-no-Yaiba---Infinity-Castle-2025.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-07-28",
+      "_releaseTimestamp": 1785196800000
+    },
+    {
+      "id": "tt8814476",
+      "type": "movie",
+      "name": "Supergirl",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/S/Supergirl-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-07-28",
+      "_releaseTimestamp": 1785196800000
+    },
+    {
+      "id": "tt39143902",
+      "type": "movie",
+      "name": "Leviticus",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/L/Leviticus-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-07-28",
+      "_releaseTimestamp": 1785196800000
+    },
+    {
+      "id": "tt32273171",
+      "type": "movie",
+      "name": "The Death of Robin Hood",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/T/The-Death-of-Robin-Hood.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-07-28",
+      "_releaseTimestamp": 1785196800000
+    },
+    {
+      "id": "tt30825738",
+      "type": "movie",
+      "name": "Star Wars: The Mandalorian and Grogu",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/S/Star-Wars-The-Mandalorian-and-Grogu-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-07-21",
+      "_releaseTimestamp": 1784592000000
+    },
+    {
+      "id": "tt15047880",
+      "type": "movie",
+      "name": "Disclosure Day",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/D/Disclosure-Day-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-07-21",
+      "_releaseTimestamp": 1784592000000
+    },
+    {
+      "id": "tt32093575",
+      "type": "movie",
+      "name": "Scary Movie",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/S/Scary-Movie-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-07-21",
+      "_releaseTimestamp": 1784592000000
+    },
+    {
+      "id": "tt26657236",
+      "type": "movie",
+      "name": "Backrooms",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/B/Backrooms-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-07-14",
+      "_releaseTimestamp": 1783987200000
+    },
+    {
+      "id": "tt34459219",
+      "type": "movie",
+      "name": "The Breadwinner",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/T/The-Breadwinner-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-07-14",
+      "_releaseTimestamp": 1783987200000
+    },
+    {
+      "id": "tt38128726",
+      "type": "movie",
+      "name": "Stop! That! Train!",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/S/Stop!-That!-Train!-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-07-14",
+      "_releaseTimestamp": 1783987200000
+    },
+    {
+      "id": "tt28263483",
+      "type": "movie",
+      "name": "Gangland",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/G/Gangland-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-07-10",
+      "_releaseTimestamp": 1783641600000
+    },
+    {
+      "id": "tt33372918",
+      "type": "movie",
+      "name": "The Outer Threat",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/T/The-Outer-Threat-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-07-10",
+      "_releaseTimestamp": 1783641600000
+    },
+    {
+      "id": "tt32361498",
+      "type": "movie",
+      "name": "The Third Degree",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/T/The-Third-Degree-2024.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-07-10",
+      "_releaseTimestamp": 1783641600000
+    },
+    {
+      "id": "tt33763941",
+      "type": "movie",
+      "name": "Passenger",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/P/Passenger-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-07-07",
+      "_releaseTimestamp": 1783382400000
+    },
+    {
+      "id": "tt33311069",
+      "type": "movie",
+      "name": "The Furious",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/T/The-Furious-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-07-07",
+      "_releaseTimestamp": 1783382400000
+    },
+    {
+      "id": "tt32432654",
+      "type": "movie",
+      "name": "Girls Like Girls",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/G/Girls-Like-Girls-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-07-07",
+      "_releaseTimestamp": 1783382400000
+    },
+    {
+      "id": "tt13518550",
+      "type": "movie",
+      "name": "The Last Whale Singer",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/T/The-Last-Whale-Singer-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-07-03",
+      "_releaseTimestamp": 1783036800000
+    }
+  ],
+  "finalized": true,
+  "finalizedAt": "2026-10-07T02:44:04.847Z"
+}
