@@ -1,0 +1,330 @@
+{
+  "year": 2026,
+  "month": 6,
+  "monthName": "June",
+  "scrapedAt": "2026-10-07T02:44:20.325Z",
+  "movies": [
+    {
+      "id": "tt37287335",
+      "type": "movie",
+      "name": "Obsession",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/O/Obsession-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-06-30",
+      "_releaseTimestamp": 1782777600000
+    },
+    {
+      "id": "tt33612209",
+      "type": "movie",
+      "name": "The Devil Wears Prada 2",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/T/The-Devil-Wears-Prada-2-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-06-30",
+      "_releaseTimestamp": 1782777600000
+    },
+    {
+      "id": "tt32649961",
+      "type": "movie",
+      "name": "Blades of the Guardians: Wind Rises in the Desert",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/B/Blades-of-the-Guardians-Wind-Rises-in-the-Desert-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-06-30",
+      "_releaseTimestamp": 1782777600000
+    },
+    {
+      "id": "tt32338122",
+      "type": "movie",
+      "name": "Pitfall",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/P/Pitfall-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-06-30",
+      "_releaseTimestamp": 1782777600000
+    },
+    {
+      "id": "tt34256700",
+      "type": "movie",
+      "name": "The Dreamer Cinderella",
+      "poster": "https://www.dvdsreleasedates.com/images/movies/T/The-Dreamer-Cinderella-2025.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-06-30",
+      "_releaseTimestamp": 1782777600000
+    },
+    {
+      "id": "tt32321803",
+      "type": "movie",
+      "name": "The Get Out",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/T/The-Get-Out-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-06-30",
+      "_releaseTimestamp": 1782777600000
+    },
+    {
+      "id": "tt18259538",
+      "type": "movie",
+      "name": "Avatar Aang: The Last Airbender",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/A/Avatar-Aang-The-Last-Airbender-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-06-28",
+      "_releaseTimestamp": 1782604800000
+    },
+    {
+      "id": "tt31349852",
+      "type": "movie",
+      "name": "Savage House",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/S/Savage-House-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-06-26",
+      "_releaseTimestamp": 1782432000000
+    },
+    {
+      "id": "tt30827810",
+      "type": "movie",
+      "name": "I Love Boosters",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/I/I-Love-Boosters-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-06-23",
+      "_releaseTimestamp": 1782172800000
+    },
+    {
+      "id": "tt39018643",
+      "type": "movie",
+      "name": "Billie Eilish - Hit Me Hard and Soft: The Tour",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/B/Billie-Eilish---Hit-Me-Hard-and-Soft-The-Tour-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-06-23",
+      "_releaseTimestamp": 1782172800000
+    },
+    {
+      "id": "tt33296751",
+      "type": "movie",
+      "name": "Tuner",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/T/Tuner-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-06-23",
+      "_releaseTimestamp": 1782172800000
+    },
+    {
+      "id": "tt32267691",
+      "type": "movie",
+      "name": "Power Ballad",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/P/Power-Ballad-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-06-23",
+      "_releaseTimestamp": 1782172800000
+    },
+    {
+      "id": "tt33365126",
+      "type": "movie",
+      "name": "Carolina Caroline",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/C/Carolina-Caroline-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-06-23",
+      "_releaseTimestamp": 1782172800000
+    },
+    {
+      "id": "tt34494076",
+      "type": "movie",
+      "name": "Hungry",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/H/Hungry-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-06-23",
+      "_releaseTimestamp": 1782172800000
+    },
+    {
+      "id": "tt35309713",
+      "type": "movie",
+      "name": "Citizen Vigilante",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/C/Citizen-Vigilante-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-06-19",
+      "_releaseTimestamp": 1781827200000
+    },
+    {
+      "id": "tt42941113",
+      "type": "movie",
+      "name": "Land of Wolves",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/L/Land-of-Wolves-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-06-19",
+      "_releaseTimestamp": 1781827200000
+    },
+    {
+      "id": "tt32547691",
+      "type": "movie",
+      "name": "Pressure",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/P/Pressure-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-06-16",
+      "_releaseTimestamp": 1781568000000
+    },
+    {
+      "id": "tt29516222",
+      "type": "movie",
+      "name": "Deep Water",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/D/Deep-Water-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-06-16",
+      "_releaseTimestamp": 1781568000000
+    },
+    {
+      "id": "tt34705112",
+      "type": "movie",
+      "name": "Busboys",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/B/Busboys-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-06-16",
+      "_releaseTimestamp": 1781568000000
+    },
+    {
+      "id": "tt32386654",
+      "type": "movie",
+      "name": "The Wizard of the Kremlin",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/T/The-Wizard-of-the-Kremlin-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-06-16",
+      "_releaseTimestamp": 1781568000000
+    },
+    {
+      "id": "tt19838566",
+      "type": "movie",
+      "name": "Kraken",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/K/Kraken-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-06-12",
+      "_releaseTimestamp": 1781222400000
+    },
+    {
+      "id": "tt11378946",
+      "type": "movie",
+      "name": "Michael",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/M/Michael-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-06-09",
+      "_releaseTimestamp": 1780963200000
+    },
+    {
+      "id": "tt17490712",
+      "type": "movie",
+      "name": "Mortal Kombat II",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/M/Mortal-Kombat-II-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-06-09",
+      "_releaseTimestamp": 1780963200000
+    },
+    {
+      "id": "tt35224721",
+      "type": "movie",
+      "name": "Neglected",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/N/Neglected-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-06-09",
+      "_releaseTimestamp": 1780963200000
+    },
+    {
+      "id": "tt33249097",
+      "type": "movie",
+      "name": "Affection",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/A/Affection-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-06-05",
+      "_releaseTimestamp": 1780617600000
+    },
+    {
+      "id": "tt32192973",
+      "type": "movie",
+      "name": "One Spoon of Chocolate",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/O/One-Spoon-of-Chocolate.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-06-05",
+      "_releaseTimestamp": 1780617600000
+    },
+    {
+      "id": "tt36926359",
+      "type": "movie",
+      "name": "Seven Snipers",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/S/Seven-Snipers-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-06-05",
+      "_releaseTimestamp": 1780617600000
+    },
+    {
+      "id": "tt21109170",
+      "type": "movie",
+      "name": "Signal One",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/S/Signal-One-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-06-05",
+      "_releaseTimestamp": 1780617600000
+    },
+    {
+      "id": "tt35672862",
+      "type": "movie",
+      "name": "Hokum",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/H/Hokum-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-06-02",
+      "_releaseTimestamp": 1780358400000
+    },
+    {
+      "id": "tt27681354",
+      "type": "movie",
+      "name": "In the Grey",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/I/In-the-Grey-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-06-02",
+      "_releaseTimestamp": 1780358400000
+    },
+    {
+      "id": "tt34379307",
+      "type": "movie",
+      "name": "Is God Is",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/I/Is-God-Is-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-06-02",
+      "_releaseTimestamp": 1780358400000
+    },
+    {
+      "id": "tt31514146",
+      "type": "movie",
+      "name": "I Swear",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/I/I-Swear-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-06-02",
+      "_releaseTimestamp": 1780358400000
+    }
+  ],
+  "finalized": true,
+  "finalizedAt": "2026-10-07T02:44:20.325Z"
+}
