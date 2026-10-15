@@ -2,8 +2,58 @@
   "year": 2026,
   "month": 10,
   "monthName": "October",
-  "scrapedAt": "2026-10-12T23:08:14.698Z",
+  "scrapedAt": "2026-10-15T05:45:29.131Z",
   "movies": [
+    {
+      "id": "tt32588798",
+      "type": "movie",
+      "name": "Practical Magic 2",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/P/Practical-Magic-2-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-10-13",
+      "_releaseTimestamp": 1791849600000
+    },
+    {
+      "id": "tt37281055",
+      "type": "movie",
+      "name": "Buddy",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/B/Buddy-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-10-13",
+      "_releaseTimestamp": 1791849600000
+    },
+    {
+      "id": "tt31349844",
+      "type": "movie",
+      "name": "Runner",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/R/Runner-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-10-13",
+      "_releaseTimestamp": 1791849600000
+    },
+    {
+      "id": "tt27369017",
+      "type": "movie",
+      "name": "Hope",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/H/Hope-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-10-13",
+      "_releaseTimestamp": 1791849600000
+    },
+    {
+      "id": "tt9601292",
+      "type": "movie",
+      "name": "The Fix",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/T/The-Fix-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-10-13",
+      "_releaseTimestamp": 1791849600000
+    },
     {
       "id": "tt22084616",
       "type": "movie",
