@@ -2,8 +2,18 @@
   "year": 2026,
   "month": 10,
   "monthName": "October",
-  "scrapedAt": "2026-10-15T05:45:29.131Z",
+  "scrapedAt": "2026-10-17T15:32:15.693Z",
   "movies": [
+    {
+      "id": "tt32212403",
+      "type": "movie",
+      "name": "Sunny Dancer",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/S/Sunny-Dancer-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-10-16",
+      "_releaseTimestamp": 1792108800000
+    },
     {
       "id": "tt32588798",
       "type": "movie",
