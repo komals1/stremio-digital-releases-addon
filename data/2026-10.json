@@ -2,7 +2,7 @@
   "year": 2026,
   "month": 10,
   "monthName": "October",
-  "scrapedAt": "2026-10-17T15:32:15.693Z",
+  "scrapedAt": "2026-10-19T22:49:58.197Z",
   "movies": [
     {
       "id": "tt32212403",
@@ -59,6 +59,16 @@
       "type": "movie",
       "name": "The Fix",
       "poster": "https://www.dvdsreleasedates.com/posters/110/T/The-Fix-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-10-13",
+      "_releaseTimestamp": 1791849600000
+    },
+    {
+      "id": "tt29630464",
+      "type": "movie",
+      "name": "Don't Move",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/D/Dont-Move-2026.jpg",
       "posterShape": "poster",
       "releaseInfo": "2026",
       "_releaseDate": "2026-10-13",
