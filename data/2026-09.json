@@ -2,7 +2,7 @@
   "year": 2026,
   "month": 9,
   "monthName": "September",
-  "scrapedAt": "2026-09-30T22:34:53.544Z",
+  "scrapedAt": "2026-10-20T02:04:31.583Z",
   "movies": [
     {
       "id": "tt1756855",
@@ -334,5 +334,7 @@
       "_releaseDate": "2026-09-01",
       "_releaseTimestamp": 1788220800000
     }
-  ]
+  ],
+  "finalized": true,
+  "finalizedAt": "2026-10-20T02:04:31.583Z"
 }
