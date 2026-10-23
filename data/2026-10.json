@@ -2,8 +2,78 @@
   "year": 2026,
   "month": 10,
   "monthName": "October",
-  "scrapedAt": "2026-10-19T22:49:58.197Z",
+  "scrapedAt": "2026-10-23T00:45:09.223Z",
   "movies": [
+    {
+      "id": "tt36841161",
+      "type": "movie",
+      "name": "Shaun the Sheep: The Beast of Mossy Bottom",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/S/Shaun-the-Sheep-The-Beast-of-Mossy-Bottom-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-10-23",
+      "_releaseTimestamp": 1792713600000
+    },
+    {
+      "id": "tt34379051",
+      "type": "movie",
+      "name": "By Any Means",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/B/By-Any-Means-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-10-20",
+      "_releaseTimestamp": 1792454400000
+    },
+    {
+      "id": "tt10794054",
+      "type": "movie",
+      "name": "The Weight",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/T/The-Weight-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-10-20",
+      "_releaseTimestamp": 1792454400000
+    },
+    {
+      "id": "tt37263154",
+      "type": "movie",
+      "name": "Merry Christmas, Ted Cooper!",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/M/Merry-Christmas,-Ted-Cooper!-2025.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-10-20",
+      "_releaseTimestamp": 1792454400000
+    },
+    {
+      "id": "tt38354965",
+      "type": "movie",
+      "name": "She's Making a List",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/S/Shes-Making-a-List-2025.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-10-20",
+      "_releaseTimestamp": 1792454400000
+    },
+    {
+      "id": "tt38353919",
+      "type": "movie",
+      "name": "Three Wisest Men",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/T/Three-Wisest-Men-2025.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-10-20",
+      "_releaseTimestamp": 1792454400000
+    },
+    {
+      "id": "tt32827454",
+      "type": "movie",
+      "name": "Tiny Fugitives",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/T/Tiny-Fugitives-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-10-20",
+      "_releaseTimestamp": 1792454400000
+    },
     {
       "id": "tt32212403",
       "type": "movie",
@@ -69,6 +139,16 @@
       "type": "movie",
       "name": "Don't Move",
       "poster": "https://www.dvdsreleasedates.com/posters/110/D/Dont-Move-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-10-13",
+      "_releaseTimestamp": 1791849600000
+    },
+    {
+      "id": "tt34470118",
+      "type": "movie",
+      "name": "Rise of the Footsoldier: Retribution",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/R/Rise-of-the-Footsoldier-Retribution-2026.jpg",
       "posterShape": "poster",
       "releaseInfo": "2026",
       "_releaseDate": "2026-10-13",
