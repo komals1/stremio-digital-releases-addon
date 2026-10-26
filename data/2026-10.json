@@ -2,13 +2,23 @@
   "year": 2026,
   "month": 10,
   "monthName": "October",
-  "scrapedAt": "2026-10-23T00:45:09.223Z",
+  "scrapedAt": "2026-10-26T16:38:29.419Z",
   "movies": [
     {
       "id": "tt36841161",
       "type": "movie",
       "name": "Shaun the Sheep: The Beast of Mossy Bottom",
       "poster": "https://www.dvdsreleasedates.com/posters/110/S/Shaun-the-Sheep-The-Beast-of-Mossy-Bottom-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-10-23",
+      "_releaseTimestamp": 1792713600000
+    },
+    {
+      "id": "tt33998222",
+      "type": "movie",
+      "name": "Love Language",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/L/Love-Language-2026.jpg",
       "posterShape": "poster",
       "releaseInfo": "2026",
       "_releaseDate": "2026-10-23",
