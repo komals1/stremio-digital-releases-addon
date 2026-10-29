@@ -2,8 +2,48 @@
   "year": 2026,
   "month": 10,
   "monthName": "October",
-  "scrapedAt": "2026-10-26T16:38:29.419Z",
+  "scrapedAt": "2026-10-29T03:42:31.185Z",
   "movies": [
+    {
+      "id": "tt32261958",
+      "type": "movie",
+      "name": "Verity",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/V/Verity-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-10-27",
+      "_releaseTimestamp": 1793059200000
+    },
+    {
+      "id": "tt36583977",
+      "type": "movie",
+      "name": "Forgotten Island",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/F/Forgotten-Island-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-10-27",
+      "_releaseTimestamp": 1793059200000
+    },
+    {
+      "id": "tt21285562",
+      "type": "movie",
+      "name": "The Dog Stars",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/T/The-Dog-Stars-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-10-27",
+      "_releaseTimestamp": 1793059200000
+    },
+    {
+      "id": "tt34611096",
+      "type": "movie",
+      "name": "The Stunt Driver",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/T/The-Stunt-Driver-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-10-27",
+      "_releaseTimestamp": 1793059200000
+    },
     {
       "id": "tt36841161",
       "type": "movie",
