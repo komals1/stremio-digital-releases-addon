@@ -2,6 +2,97 @@
   "year": 2026,
   "month": 11,
   "monthName": "November",
-  "scrapedAt": "2026-11-01T01:09:35.857Z",
-  "movies": []
+  "scrapedAt": "2026-11-03T16:23:40.992Z",
+  "movies": [
+    {
+      "id": "tt35538033",
+      "type": "movie",
+      "name": "Resident Evil",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/R/Resident-Evil-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-11-03",
+      "_releaseTimestamp": 1793664000000
+    },
+    {
+      "id": "tt34206385",
+      "type": "movie",
+      "name": "Primetime",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/P/Primetime-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-11-03",
+      "_releaseTimestamp": 1793664000000
+    },
+    {
+      "id": "tt13609648",
+      "type": "movie",
+      "name": "Sense and Sensibility",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/S/Sense-and-Sensibility-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-11-03",
+      "_releaseTimestamp": 1793664000000
+    },
+    {
+      "id": "tt37542993",
+      "type": "movie",
+      "name": "Daniel and the Fiery Furnace",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/D/Daniel-and-the-Fiery-Furnace-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-11-03",
+      "_releaseTimestamp": 1793664000000
+    },
+    {
+      "id": "tt35856037",
+      "type": "movie",
+      "name": "Your Mother Your Mother Your Mother",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/Y/Your-Mother-Your-Mother-Your-Mother-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-11-03",
+      "_releaseTimestamp": 1793664000000
+    },
+    {
+      "id": "tt10377864",
+      "type": "movie",
+      "name": "Beware Boi&uacute;na",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/B/Beware-Boiuna-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-11-03",
+      "_releaseTimestamp": 1793664000000
+    },
+    {
+      "id": "tt27739255",
+      "type": "movie",
+      "name": "Charlie Harper",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/C/Charlie-Harper-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-11-03",
+      "_releaseTimestamp": 1793664000000
+    },
+    {
+      "id": "tt13884466",
+      "type": "movie",
+      "name": "Model Citizen",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/M/Model-Citizen-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-11-03",
+      "_releaseTimestamp": 1793664000000
+    },
+    {
+      "id": "tt18398986",
+      "type": "movie",
+      "name": "Without Blood",
+      "poster": "https://www.dvdsreleasedates.com/images/movies/W/Without-Blood-2025.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-11-03",
+      "_releaseTimestamp": 1793664000000
+    }
+  ]
 }
