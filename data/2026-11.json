@@ -2,8 +2,48 @@
   "year": 2026,
   "month": 11,
   "monthName": "November",
-  "scrapedAt": "2026-11-08T20:07:33.922Z",
+  "scrapedAt": "2026-11-11T14:06:19.967Z",
   "movies": [
+    {
+      "id": "tt7526136",
+      "type": "movie",
+      "name": "Heart of the Beast",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/H/Heart-of-the-Beast-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-11-10",
+      "_releaseTimestamp": 1794268800000
+    },
+    {
+      "id": "tt36586020",
+      "type": "movie",
+      "name": "Other Mommy",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/O/Other-Mommy-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-11-10",
+      "_releaseTimestamp": 1794268800000
+    },
+    {
+      "id": "tt32329539",
+      "type": "movie",
+      "name": "Crawlers",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/C/Crawlers-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-11-10",
+      "_releaseTimestamp": 1794268800000
+    },
+    {
+      "id": "tt43739386",
+      "type": "movie",
+      "name": "V/H/S/MIXTAPE",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/V/V-H-S-MIXTAPE-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-11-10",
+      "_releaseTimestamp": 1794268800000
+    },
     {
       "id": "tt39850240",
       "type": "movie",
