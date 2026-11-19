@@ -2,8 +2,48 @@
   "year": 2026,
   "month": 11,
   "monthName": "November",
-  "scrapedAt": "2026-11-16T23:34:19.916Z",
+  "scrapedAt": "2026-11-19T00:53:55.542Z",
   "movies": [
+    {
+      "id": "tt33764258",
+      "type": "movie",
+      "name": "The Odyssey",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/T/The-Odyssey-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-11-17",
+      "_releaseTimestamp": 1794873600000
+    },
+    {
+      "id": "tt14129116",
+      "type": "movie",
+      "name": "A Talent for Murder",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/A/A-Talent-for-Murder-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-11-17",
+      "_releaseTimestamp": 1794873600000
+    },
+    {
+      "id": "tt33184695",
+      "type": "movie",
+      "name": "Rolling Loud: The Movie",
+      "poster": "https://www.dvdsreleasedates.com/images/movies/R/Rolling-Loud-The-Movie-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-11-17",
+      "_releaseTimestamp": 1794873600000
+    },
+    {
+      "id": "tt29256561",
+      "type": "movie",
+      "name": "The Beast",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/T/The-Beast-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-11-17",
+      "_releaseTimestamp": 1794873600000
+    },
     {
       "id": "tt7526136",
       "type": "movie",
