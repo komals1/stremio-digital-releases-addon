@@ -2,8 +2,18 @@
   "year": 2026,
   "month": 11,
   "monthName": "November",
-  "scrapedAt": "2026-11-19T00:53:55.542Z",
+  "scrapedAt": "2026-11-21T01:59:21.757Z",
   "movies": [
+    {
+      "id": "tt13611778",
+      "type": "movie",
+      "name": "The Mongoose",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/T/The-Mongoose-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-11-20",
+      "_releaseTimestamp": 1795132800000
+    },
     {
       "id": "tt33764258",
       "type": "movie",
