@@ -2,8 +2,88 @@
   "year": 2026,
   "month": 11,
   "monthName": "November",
-  "scrapedAt": "2026-11-23T02:09:18.586Z",
+  "scrapedAt": "2026-11-25T17:05:38.510Z",
   "movies": [
+    {
+      "id": "tt45368240",
+      "type": "movie",
+      "name": "You Can See Everything",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/Y/You-Can-See-Everything-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-11-24",
+      "_releaseTimestamp": 1795478400000
+    },
+    {
+      "id": "tt29611136",
+      "type": "movie",
+      "name": "Wicker",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/W/Wicker-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-11-24",
+      "_releaseTimestamp": 1795478400000
+    },
+    {
+      "id": "tt37510326",
+      "type": "movie",
+      "name": "The Social Reckoning",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/T/The-Social-Reckoning-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-11-24",
+      "_releaseTimestamp": 1795478400000
+    },
+    {
+      "id": "tt35410859",
+      "type": "movie",
+      "name": "Fjord",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/F/Fjord-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-11-24",
+      "_releaseTimestamp": 1795478400000
+    },
+    {
+      "id": "tt9213874",
+      "type": "movie",
+      "name": "Breeder",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/B/Breeder-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-11-24",
+      "_releaseTimestamp": 1795478400000
+    },
+    {
+      "id": "tt38806063",
+      "type": "movie",
+      "name": "Bad Ass Bear",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/B/Bad-Ass-Bear-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-11-24",
+      "_releaseTimestamp": 1795478400000
+    },
+    {
+      "id": "tt40311603",
+      "type": "movie",
+      "name": "Ghosts: The Possession of Button House",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/G/Ghosts-The-Possession-of-Button-House-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-11-24",
+      "_releaseTimestamp": 1795478400000
+    },
+    {
+      "id": "tt31514673",
+      "type": "movie",
+      "name": "The Awakening",
+      "poster": "https://www.dvdsreleasedates.com/posters/110/T/The-Awakening-2026.jpg",
+      "posterShape": "poster",
+      "releaseInfo": "2026",
+      "_releaseDate": "2026-11-24",
+      "_releaseTimestamp": 1795478400000
+    },
     {
       "id": "tt13611778",
       "type": "movie",
